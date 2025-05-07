@@ -7,22 +7,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
-
 
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tblshift")
-public class Shift {
+@Table(name = "tblshiftemployee")
+public class ShiftEmployee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String name;
-    LocalDateTime startTime;
-    LocalDateTime endTime;
-    String description;
-    List<Long> shiftBreakIds;
+    Long shiftId;
+    Long employeeId;
+    LocalDateTime assignmentDate;
 }
