@@ -1,5 +1,7 @@
 package com.project.humanresource.entity;
 
+import com.project.humanresource.utility.LeaveTypes;
+import com.project.humanresource.utility.StateTypes;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,23 +9,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
-
 
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tblshift")
-public class Shift {
+@Table(name = "tblleave")
+public class Leave {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String name;
-    LocalDateTime startTime;
-    LocalDateTime endTime;
+    LocalDateTime startDate;
+    LocalDateTime endDate;
     String description;
+    LeaveTypes leaveType;
+    StateTypes state;
     Long employeeId;
-    List<Long> shiftBreakIds;
 }

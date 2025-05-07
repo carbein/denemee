@@ -1,29 +1,30 @@
 package com.project.humanresource.entity;
 
+import com.project.humanresource.utility.ExpensesCategory;
+import com.project.humanresource.utility.StateTypes;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
+import java.math.BigDecimal;
 
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tblshift")
-public class Shift {
+@Table(name = "tblexpenses")
+public class Expenses {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String name;
-    LocalDateTime startTime;
-    LocalDateTime endTime;
+    BigDecimal amount;
     String description;
+    String documentUrl;
+    StateTypes state;
+    ExpensesCategory category;
     Long employeeId;
-    List<Long> shiftBreakIds;
+
 }
