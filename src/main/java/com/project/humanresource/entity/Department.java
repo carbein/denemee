@@ -11,17 +11,10 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Company {
+public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String companyName;
-    String companyAddress;
-    String companyPhoneNumber;
-    String companyEmail;
-    Long employerId;
-
-
+    String departmentName;
+    Long companyBranchId;
 }
-
-
