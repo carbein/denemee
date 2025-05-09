@@ -4,17 +4,17 @@ server:
 
 spring:
   datasource:
+    url: jdbc:postgresql://localhost:5432/humanresource
+    username: postgres
+    password: root
     driver-class-name: org.postgresql.Driver
-    url: ${HUMANRESOURCE_DB_URL}
-    username: ${USERNAME}
-    password: ${PASSWORD}
-    jpa:
+  jpa:
+    hibernate:
+      ddl-auto: update  # create
+    show-sql: true
+    properties:
       hibernate:
-        ddl-auto: create-drop
-    security:
-      user:
-        name: ADMINISTRATOR
-        password: ADMINISTRATOR
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 
 
