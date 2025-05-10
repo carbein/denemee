@@ -8,7 +8,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "user_role")
-public class UserRole extends BaseEntity {
+public class UserRole {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(nullable = false, unique = true)
-    private String name; // çalışan, şirket yöneticisi, site yöneticisi
+    private String name; // employee, company manager, site admin
 } 
