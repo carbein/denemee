@@ -8,6 +8,10 @@ spring:
     username: postgres
     password: root
     driver-class-name: org.postgresql.Driver
+  security:
+    user:
+      name: ADMINISTRATOR
+      password: ADMINISTRATOR
   jpa:
     hibernate:
       ddl-auto: update  # create
@@ -24,6 +28,8 @@ spring:
           auth: true
           starttls:
             enable: true
+
+
 
 
 springdoc:
