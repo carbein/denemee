@@ -1,19 +1,24 @@
 package com.project.humanresource.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Builder
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "tbluser")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+@Getter
+@Setter
+@Table(name = "users")
+public class User extends BaseEntity {
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false)
+    private boolean isActive = false;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id", nullable = false)
+    private UserRole userRole;
 }
