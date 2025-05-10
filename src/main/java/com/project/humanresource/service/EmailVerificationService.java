@@ -1,6 +1,7 @@
 package com.project.humanresource.service;
 
 import com.project.humanresource.entity.EmailVerification;
+import com.project.humanresource.entity.Employee;
 import com.project.humanresource.repository.EmailVerificationRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,7 @@ public class EmailVerificationService {
             String token = UUID.randomUUID().toString();
             LocalDateTime expiryDate = LocalDateTime.now().plusMinutes(30);
 
+            // email verification nesnesi oluşturuluyor
             EmailVerification verification = new EmailVerification();
             verification.setEmail(toEmail);
             verification.setToken(token);
@@ -38,18 +40,30 @@ public class EmailVerificationService {
         }
 
         private void sendEmail(String toEmail, String token) {
+            // SMTP ayarlarının tanılanması:
+            // Bu ayarlar, Gmail’in SMTP (Mail Gönderim) sunucusuna bağlanmak için gerekli.
+            // TLS protokolü (güvenli bağlantı) ve kimlik doğrulama (auth) açılmış.
             Properties props = new Properties();
             props.put("mail.smtp.auth", "true");
             props.put("mail.smtp.starttls.enable", "true");
             props.put("mail.smtp.host", "smtp.gmail.com");
             props.put("mail.smtp.port", "587");
 
-            Session session = Session.getInstance(props,
-                    new Authenticator() {
+            // Session.getInstance(...): Bu ayarlarla oturum (bağlantı ortamı) oluşturur
+            // session: Artık bu session üzerinden e-posta gönderimi yapılabilir
+            Session session = Session.getInstance(props, // props: SMTP sunucusu için gerekli ayarları içerir (host, port, TLS vb.)
+                    new Authenticator() { // Authenticator: Sunucuya giriş için kullanıcı adı ve şifreyi sağlar
                         protected PasswordAuthentication getPasswordAuthentication() {
-                            return new PasswordAuthentication("elifcangoktepe@gmail.com", "humanresource**");
+                            return new PasswordAuthentication("elifcangoktepe@gmail.com", "jynohncfzxegpmrz");
                         }
                     });
+            /**
+             * 🧠 Gerçek dünya benzetmesi:
+             * 📫 E-posta göndermek bir posta ofisine gitmek gibidir.
+             * props → hangi postaneye gideceğini (adres, güvenlik kuralı) belirler.
+             * Authenticator → postanedeki hesabını göstermek için kimliğini (mail ve şifre) kullanır.
+             * Session → bu kimlik ve kurallarla oraya bağlanmış bir "oturumdur", yani artık işlem yapmaya hazırsındır.
+             */
 
             try {
                 Message message = new MimeMessage(session);
@@ -65,16 +79,24 @@ public class EmailVerificationService {
             }
         }
 
-        public boolean verifyToken(String token) {
-            Optional<EmailVerification> optional = repository.findByToken(token);
-            if (optional.isPresent()) {
-                EmailVerification verification = optional.get();
-                if (verification.getExpiryDate().isAfter(LocalDateTime.now())) {
-                    return true;
-                }
-            }
+    public boolean verifyToken(String token) {
+        Optional<EmailVerification> optional = repository.findByToken(token);
+        if (optional.isEmpty()) {
             return false;
-       }
+        }
+
+        EmailVerification verification = optional.get();
+
+        if (verification.getExpiryDate().isBefore(LocalDateTime.now())) {
+            return false; // Token süresi dolmuş
+        }
+//        BURADA EMPLOYEE YE AKTİFLİK EKELYİP AKTİF HALE GETİRMEMİZ GEREKİYOR.
+//        Employee employee = verification.getEmployee();
+//        employee.setEnable(true);
+//        employeeRepository.save(employee); // enable true yap ve kaydet
+
+        return true;
+    }
 }
 
 

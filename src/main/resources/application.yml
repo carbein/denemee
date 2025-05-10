@@ -17,8 +17,13 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   mail:
     username: elifcangoktepe@gmail.com
-    password: humanresource**
-
+    password: jynohncfzxegpmrz
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 
 springdoc:
