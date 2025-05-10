@@ -2,7 +2,97 @@
 
     display: flex;
     flex-direction: column;
-    border-style:  solid;
-    border-width:  5px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+
+
+}
+
+.container{
+
+    display: flex;
+    flex-direction: column;
+
+    width: 899px;
+    height: 543px;
+
+
+}
+
+.input-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 25vh;
+
+
+}
+.E-mail-group{
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+
+}
+
+.Password-group{
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+
+}
+
+.E-mail Input{
+border: none;
+
+
+}
+
+.Password Input{
+    border: none;
+
+}
+
+.Label{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+
+
+}
+button{
+    border: none;
+    width: 20vh;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: #ae3c33;
+    font-size: 13px;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 20px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+
+
+
+}
+.button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+
+
+
 
 }
