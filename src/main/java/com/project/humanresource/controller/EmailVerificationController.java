@@ -1,40 +1,31 @@
 package com.project.humanresource.controller;
 
-import com.project.humanresource.entity.EmailVerification;
-import com.project.humanresource.entity.Employee;
-import com.project.humanresource.repository.EmailVerificationRepository;
-import com.project.humanresource.repository.EmployeeRepository;
+import com.project.humanresource.service.EmailVerificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.time.LocalDateTime;
+import org.springframework.web.bind.annotation.*;
 
 @RestController // Bu sınıf bir REST API controller'dır
 @RequestMapping("/api/auth") // Tüm endpointler bu URL ile başlar
 @RequiredArgsConstructor // final alanları constructor ile otomatik enjekte eder
 public class EmailVerificationController {
 
-    private final EmailVerificationRepository repository; // Kodları sorgulamak için
-    private final EmployeeRepository employeeRepository; // Çalışanı güncellemek için
+    private final EmailVerificationService verificationService;
+
+    @PostMapping("/send-verification")
+    public ResponseEntity<String> sendEmail(@RequestParam String email) {
+        verificationService.sendVerificationEmail(email);
+        return ResponseEntity.ok("Verification email sent.");
+    }
 
     @GetMapping("/verify")
-    public ResponseEntity<String> verifyEmail(@RequestParam("employeeId") Long employeeId) {
-        Employee employee = employeeRepository.findById(employeeId)
-                .orElseThrow(() -> new RuntimeException("Employee not found"));
-
-        EmailVerification verification = repository.findByEmployee(employee);
-        if (verification == null || verification.getExpiryDate().isBefore(LocalDateTime.now())) {
-            return ResponseEntity.badRequest().body("Verification code expired or missing");
+    public ResponseEntity<String> verifyEmail(@RequestParam String token) {
+        boolean valid = verificationService.verifyToken(token);
+        if (valid) {
+            return ResponseEntity.ok("Email verified successfully!");
+        } else {
+            return ResponseEntity.badRequest().body("Invalid or expired token.");
         }
-
-        employee.setEmailVerified(true);
-        employeeRepository.save(employee);
-        repository.delete(verification); // token'ı siliyoruz
-
-        return ResponseEntity.ok("Your email has been verified.");
     }
+
 }

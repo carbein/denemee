@@ -15,6 +15,9 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    username: elifcangoktepe@gmail.com
+    password: humanresource**
 
 
 
