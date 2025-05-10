@@ -1,0 +1,8 @@
+.loginPage {
+
+    display: flex;
+    flex-direction: column;
+    border-style:  solid;
+    border-width:  5px;
+
+}
