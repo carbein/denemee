@@ -5,8 +5,9 @@ function RegisterPage(){
         <div className="RegisterPage" style={{backgroundImage: 'url(img/login-register-background-01.jpg)'}}>
             <div className="container" style={{backgroundImage: 'url(img/login-page-background.png)'}}>
                 <div className="input-area">
-                    <h3 id="h3">REGISTER</h3>
+
                     <form className="register-form" >
+                        <h3 id="h3">REGISTER</h3>
                         <div className="Name-group">
                             <label className="Label" >Name</label>
                             <input type="text" name="Name-Area" className="Name Input"/>

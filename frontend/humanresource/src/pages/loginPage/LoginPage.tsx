@@ -14,8 +14,9 @@ function LoginPage(){
     <div className="container" style={{backgroundImage: 'url(img/login-page-background.png)'}}>
 
         <div className="input-area">
-            <h3 id="h3">LOGIN</h3>
+
             <form className="login-form" >
+                <h3 id="h3">LOGIN</h3>
                 <div className="E-mail-group">
                     <label className="Label">E-mail</label>
                     <input type="text" name="Email Area" className="E-mail Input"/>
