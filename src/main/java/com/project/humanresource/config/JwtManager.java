@@ -23,7 +23,7 @@ public class JwtManager {
         Date expiration = new Date(now + expirationDate);
         Algorithm algorithm = Algorithm.HMAC512(secretKey);
         token = JWT.create()
-                .withAudience()
+
                 .withExpiresAt(issureAt)
                 .withExpiresAt(expiration)
                 .withClaim("userId", userId)
