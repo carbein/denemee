@@ -12,7 +12,7 @@ import java.util.Optional;
 
 
 public class JwtManager {
-    @Value("{")
+//    @Value("{")
     private String secretKey;
 
     private Long expirationDate=1000L*60*60*2;
