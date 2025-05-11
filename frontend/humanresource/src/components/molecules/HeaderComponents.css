@@ -7,7 +7,9 @@
     flex-wrap: wrap; /* Ekran küçülürse alt satıra geçebilir */
     margin-bottom: 100px;
 }
-.login-btn {
+.loginbuttonheader {
+    margin-top: 20px;
+    margin-bottom: 20px;
     background-color: transparent;
     color: white;
     border: 2px solid white;
@@ -20,11 +22,13 @@
     transition: all 0.3s ease;
     width: 120px;
 }
-.login-btn:hover {
+.loginbuttonheader:hover {
     background-color: white;
     color: #beffb1 ;
 }
-.signup-btn{
+.signupbuttonheader{
+    margin-top: 20px;
+    margin-bottom: 20px;
     background-color: white;
     color: #254231;
     border: 2px solid white;
@@ -37,12 +41,12 @@
     transition: all 0.3s ease;
     width: 120px;
 }
-.signup-btn:hover {
+.signupbuttonheader:hover {
     background-color: #beffb1 ;
     border: #beffb1 ;
     color: white;
 }
-.btn1{
+.buttonheader1{
     background-color: transparent;
     color: white;
     padding: 8px;
@@ -52,8 +56,10 @@
     cursor: pointer;
     transition: all 0.3s ease;
     width: auto;
+
+
 }
-.btn1:hover {
+.buttonheader1:hover {
     background-color: transparent;
     color: #beffb1;
 }

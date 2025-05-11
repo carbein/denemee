@@ -13,10 +13,10 @@ function HeaderComponent() {
                         <img className="logo" src="/img/logo.png" alt="logo" />
                     </div>
                     <div className="col-1 button-location">
-                        <button className="btn1 me-3 mt-4 ">PRODUCTS</button>
-                        <button className="btn1 me-3 mt-4 ">USER STORIES</button>
-                        <button className="signup-btn me-3 mt-4" onClick={() => navigate('/register')}>SIGN UP</button>
-                        <button className="login-btn me-5 mt-4" onClick={() => navigate('/login')}>LOG IN</button>
+                        <button className="buttonheader1 ">PRODUCTS</button>
+                        <button className="buttonheader1 ">USER STORIES</button>
+                        <button className="signupbuttonheader" onClick={() => navigate('/register')}>SIGN UP</button>
+                        <button className="loginbuttonheader" onClick={() => navigate('/login')}>LOG IN</button>
                     </div>
                 </div>
                 <div className="slogan">
