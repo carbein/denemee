@@ -114,7 +114,7 @@ button{
 
 }
 
-.to-register{
+.to-login{
 
     display: flex;
     flex-direction: column;
@@ -128,5 +128,17 @@ a{
     font-family: Muli-Bold;
     font-size: 20px;
     margin-top: 15vh;
+
+}
+
+#h3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0vh;
+    font-family: Muli-Regular;
+    font-size: 20px;
+    color: #ae3c33;
 
 }
