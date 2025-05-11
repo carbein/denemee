@@ -38,7 +38,7 @@
 
 }
 
-.logo{
+.logor{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -116,7 +116,7 @@
 
 }
 
-.button{
+.button-register{
     display: flex;
     flex-direction: column;
     justify-content: center;

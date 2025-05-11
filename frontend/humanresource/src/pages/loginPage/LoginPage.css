@@ -82,7 +82,7 @@
 
 }
 
-.button{
+.button-login{
     display: flex;
     flex-direction: column;
     justify-content: center;
