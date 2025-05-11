@@ -5,7 +5,10 @@ function Product(){
     return(
         <div className="product-container">
             <div className="titleheader">
-                    PRODUCTS
+                <h1>PRODUCTS</h1>
+                <h4>Pricing based on your number of employees,
+                    use as much as you want, pay as much as you use
+                </h4>
             </div>
             <div className="productlist">
                 <div className="product">

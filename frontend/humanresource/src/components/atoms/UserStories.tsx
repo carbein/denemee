@@ -42,15 +42,27 @@ function UserStories() {
                 <div className="col-7">
                     <div
                         ref={profileRef}
-                        className={`user-profile ${profileVisible ? 'show' : ''}`}
+                        className={`user-profile row ${profileVisible ? 'show' : ''}`}
                     >
-                        <img className="human-image"   src="/img/humanik.png"/>
-                        <h2>
+                        <div className="col-5" >
+                            <img className="human-image"   src="/img/humanik.png"/>
+                        </div>
 
-                        </h2>
+                        <div className="col-7">
+                            <h2>
+                                “One of the most enjoyable aspects of working with Humin is offering a great customer experience service.”
+                            </h2>
+                            <h6>
+                                Müge Tuğcu, Senior Employee Happiness and Corporate Transformation Manager
+                            </h6>
+                            <button className="user-story-buton2">
+                                Read the User Story →
+                            </button>
+
+                        </div>
                     </div>
                 </div>
-                <div className="col-5">
+                <div className="col-5  ">
                     <div
                         ref={commentRef}
                         className={`user-story-comment ${commentVisible ? 'show' : ''}`}
@@ -62,6 +74,11 @@ function UserStories() {
                         <h5>
                             We’re simplifying HR together with thousands of human resources professionals. Discover how HR experts got started with Humin.
                         </h5>
+                        <div className="deneme1">
+                            <button className="user-story-buton">
+                                Show all stories →
+                            </button>
+                        </div>
 
                     </div>
                 </div>
