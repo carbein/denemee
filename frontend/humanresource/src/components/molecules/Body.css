@@ -1,0 +1,11 @@
+.body-container{
+    gap: 20px; /* Butonlar arası boşluk */
+    width: 100%;
+    flex-wrap: wrap; /* Ekran küçülürse alt satıra geçebilir */
+}
+.product-container{
+
+}
+.user-stories-container{
+    height: 2000px;
+}

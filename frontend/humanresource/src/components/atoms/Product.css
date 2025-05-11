@@ -1,0 +1,61 @@
+.product-container{
+    background: linear-gradient(    180deg,
+    white 0%,
+    white 5%,
+    #beffb1 50%);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+.product{
+    padding: 10px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    background-color: #ffffff;
+    width: 300px;
+    height: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    border-radius: 5%;
+    transition: transform 0.7s ease;
+}
+.product:hover{
+    transform: scale(1.03);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+}
+.product-header{
+    display: flex;
+}
+.small-image{
+    height: 100px;
+}
+.product-name-style{
+    margin-right: 15px;
+    align-content: center;
+    text-align: end;
+}
+.product-body{
+    margin: 15px;
+}
+.product-btn-bar{
+    height: 100px;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;   /* yatayda ortala */
+    align-items: center;       /* dikeyde ortala */
+}
+.product-manage-btn{
+    border-radius: 40px;
+    border: 1px solid black;
+    font-family: "Roboto Thin";
+    background-color: white;
+    cursor: pointer;
+    color: #ae3c33;
+    font-weight: normal;
+}
+.product-manage-btn:hover{
+    border: 2px solid black;
+    color: #ae3c33;
+    font-weight: bolder;
+}
