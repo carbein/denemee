@@ -7,6 +7,7 @@ import com.project.humanresource.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -32,5 +33,9 @@ public class UserRoleService {
         return userRepository.findById(userId)
             .map(User::getUserRole)
             .orElse(null);
+    }
+
+    public List<UserRole> findAllRole(Long userId){
+        return userRoleRepository.findByUserId(userId);
     }
 } 
