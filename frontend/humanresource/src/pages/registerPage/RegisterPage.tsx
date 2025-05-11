@@ -2,12 +2,16 @@ import './RegisterPage.css'
 
 function RegisterPage(){
     return (
-        <div className="RegisterPage" style={{backgroundImage: 'url(img/login-register-background-01.jpg)'}}>
-            <div className="container" style={{backgroundImage: 'url(img/login-page-background.png)'}}>
+        <div className="RegisterPage" >
+            <div className="container" >
+
                 <div className="input-area">
+                    <div className="logo">
+                        <img src="/img/logo.png" alt="logo"/>
+                    </div>
 
                     <form className="register-form" >
-                        <h3 id="h3">REGISTER</h3>
+                        <h3 id="h3r">REGISTER</h3>
                         <div className="Name-group">
                             <label className="Label" >Name</label>
                             <input type="text" name="Name-Area" className="Name Input"/>
@@ -29,10 +33,10 @@ function RegisterPage(){
                             <input type="password" name="Password Area" className="Password Input" />
                         </div>
                         <div className="button">
-                            <button type='button' >Create Account</button>
+                            <button className="signup-btn ">SIGN UP</button>
                         </div>
                         <div className='to-register'>
-                            <a id="a" href="/login">Back to Login</a>
+                            <a id="ar" href="/login">Back to Login</a>
                         </div>
 
                     </form>
