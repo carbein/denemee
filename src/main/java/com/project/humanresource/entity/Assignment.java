@@ -31,7 +31,3 @@ public class Assignment {
     private Employee employee;
 }
 
-// ZimmetKategori enum'u da aynı dosyada tanımlanıyor:
-enum ZimmetKategori {
-    BILGISAYAR, TELEFON, DIGER
-} 
