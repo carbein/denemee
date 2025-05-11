@@ -19,6 +19,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     width: 120px;
+    height: 50px;
 }
 .login-btn:hover {
     background-color: white;
@@ -36,6 +37,8 @@
     cursor: pointer;
     transition: all 0.3s ease;
     width: 120px;
+    height: 50px;
+
 }
 .signup-btn:hover {
     background-color: #beffb1 ;
@@ -52,6 +55,8 @@
     cursor: pointer;
     transition: all 0.3s ease;
     width: auto;
+    border: none;
+
 }
 .btn1:hover {
     background-color: transparent;
