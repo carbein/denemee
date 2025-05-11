@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Body.css';
 import Product from "../atoms/Product.tsx";
+import UserStories from "../atoms/UserStories.tsx";
 
 function Body(){
     return(
@@ -9,7 +10,7 @@ function Body(){
                 <Product />
             </div>
             <div className={"user-stories-container"}>
-                NASILSINIZ????
+                <UserStories />
             </div>
         </div>
     )

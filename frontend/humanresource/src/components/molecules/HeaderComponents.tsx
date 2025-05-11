@@ -1,8 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './HeaderComponents.css';
+import { useNavigate } from 'react-router-dom';
 
 function HeaderComponent() {
-
+    const navigate = useNavigate();
     return (
 
         <>
@@ -14,8 +15,8 @@ function HeaderComponent() {
                     <div className="col-1 button-location">
                         <button className="btn1 me-3 mt-4 ">PRODUCTS</button>
                         <button className="btn1 me-3 mt-4 ">USER STORIES</button>
-                        <button className="signup-btn me-3 mt-4 ">SIGN UP</button>
-                        <button className="login-btn me-5 mt-4" >LOG IN</button>
+                        <button className="signup-btn me-3 mt-4" onClick={() => navigate('/register')}>SIGN UP</button>
+                        <button className="login-btn me-5 mt-4" onClick={() => navigate('/login')}>LOG IN</button>
                     </div>
                 </div>
                 <div className="slogan">

@@ -1,0 +1,12 @@
+.user-stories{
+    height: 500px;
+    padding: 40px;
+}
+.user-profile{
+    background-color: white;
+    height: 100%;
+}
+.user-story-comment{
+    background-color: #ae3c33;
+    height: 100%;
+}
