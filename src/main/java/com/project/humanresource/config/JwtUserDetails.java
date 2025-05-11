@@ -33,7 +33,8 @@ public class JwtUserDetails implements UserDetailsService {
     public UserDetails loadUserById(Long userId) {
         Optional<User> user = userService.findById(userId);
         if (user.isPresent()) {
-            return null;
+            throw new UsernameNotFoundException("User not found with ID: " + userId); // bakılacak
+            //return null;
         }
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();  // user role servisinden userId sine ait rollerin listesini çekiyoruz.
         List<UserRole> userRolesList =userRoleService.findAllRole(userId); // bu role listesini grandauthority listesine ekliyoruz.

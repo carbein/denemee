@@ -5,14 +5,15 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.Objects;
 import java.util.Optional;
 
-
+@Component      // hocaya sor bunu component olmadan jwt token filter clasındaki jwtManager kırmızı oluyor.
 public class JwtManager {
-//    @Value("{")
+    @Value("aspfd23423jdıgho25590fsş")
     private String secretKey;
 
     private Long expirationDate=1000L*60*60*2;
@@ -23,8 +24,7 @@ public class JwtManager {
         Date expiration = new Date(now + expirationDate);
         Algorithm algorithm = Algorithm.HMAC512(secretKey);
         token = JWT.create()
-
-                .withExpiresAt(issureAt)
+                .withIssuedAt(issureAt)
                 .withExpiresAt(expiration)
                 .withClaim("userId", userId)
                 .withClaim("log", "Time right now" + (new Date()))
