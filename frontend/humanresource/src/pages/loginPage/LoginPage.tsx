@@ -27,7 +27,7 @@ function LoginPage(){
                     <label className="Label">Password</label>
                     <input type="password" name="Password Area" className="Password Input" />
                 </div>
-                <div className="button">
+                <div className="button-login">
                     <button className="login-btn"  >LOG IN</button>
                 </div>
                 <div className='to-login'>

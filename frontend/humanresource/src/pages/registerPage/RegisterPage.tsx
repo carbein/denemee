@@ -6,7 +6,7 @@ function RegisterPage(){
             <div className="container" >
 
                 <div className="input-area">
-                    <div className="logo">
+                    <div className="logor">
                         <img src="/img/logo.png" alt="logo"/>
                     </div>
 
@@ -32,7 +32,7 @@ function RegisterPage(){
                             <label className="Label">Confirm Password</label>
                             <input type="password" name="Password Area" className="Password Input" />
                         </div>
-                        <div className="button">
+                        <div className="button-register">
                             <button className="signup-btn ">SIGN UP</button>
                         </div>
                         <div className='to-register'>
