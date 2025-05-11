@@ -12,7 +12,7 @@ import java.util.Optional;
 
 
 public class JwtManager {
-    @Value("{")
+//    @Value("{")
     private String secretKey;
 
     private Long expirationDate=1000L*60*60*2;
@@ -23,7 +23,7 @@ public class JwtManager {
         Date expiration = new Date(now + expirationDate);
         Algorithm algorithm = Algorithm.HMAC512(secretKey);
         token = JWT.create()
-                .withAudience()
+
                 .withExpiresAt(issureAt)
                 .withExpiresAt(expiration)
                 .withClaim("userId", userId)

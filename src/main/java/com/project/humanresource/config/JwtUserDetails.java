@@ -42,7 +42,7 @@ public class JwtUserDetails implements UserDetailsService {
             grantedAuthorities.add(new SimpleGrantedAuthority(userRole.getName()));
         });
 
-        return User.builder()
+        return org.springframework.security.core.userdetails.User.builder()
                 .username(user.get().getEmail())
                 .password(user.get().getPassword())
                 .accountLocked(false)

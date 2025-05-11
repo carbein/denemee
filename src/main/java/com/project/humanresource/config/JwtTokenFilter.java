@@ -10,12 +10,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
 
+
 public class JwtTokenFilter extends OncePerRequestFilter {
-    @Autowired
+   // @Autowired
     private JwtManager jwtManager;
     @Autowired
     private JwtUserDetails jwtUserDetails;
