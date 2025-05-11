@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "Muli-Regular";
+    src: url("frontend/humanresource/public/fonts/muli/Muli-Regular.ttf"); }
+@font-face {
+    font-family: "Muli-SemiBold";
+    src: url("frontend/humanresource/public/fonts/muli/Muli-SemiBold.ttf"); }
+@font-face {
+    font-family: "Muli-Bold";
+    src: url("frontend/humanresource/public/fonts/muli/Muli-Bold.ttf"); }
+
 .loginPage {
 
     display: flex;
@@ -5,6 +15,10 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+
 
 
 
@@ -14,9 +28,11 @@
 
     display: flex;
     flex-direction: column;
-
+    height: 743px;
     width: 899px;
-    height: 543px;
+    background-size: cover;
+    background: url("frontend/humanresource/public/img/login-page-background.png") no-repeat  center;
+
 
 
 }
@@ -91,8 +107,26 @@ button{
     justify-content: center;
     align-items: center;
     margin-top: 5vh;
+    cursor: pointer;
 
 
 
+
+}
+
+.to-register{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+a{
+
+    color:  #ae3c33  ;
+    font-family: Muli-Bold;
+    font-size: 20px;
+    margin-top: 15vh;
 
 }

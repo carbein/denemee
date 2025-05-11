@@ -3,12 +3,13 @@
 import './LoginPage.css'
 
 
+
 function LoginPage(){
 
 
 
     return (
-<div className="loginPage">
+<div className="loginPage" style={{backgroundImage: 'url(img/login-register-background-01.jpg)'}}>
     <div className="container" style={{backgroundImage: 'url(img/login-page-background.png)'}}>
         <div className="input-area">
             <form id="login-form" >
@@ -22,6 +23,9 @@ function LoginPage(){
                 </div>
                 <div className="button">
                 <button type='button' >Login</button>
+                </div>
+                <div className='to-register'>
+                    <a href="/register">create new account</a>
                 </div>
             </form>
 
