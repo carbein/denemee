@@ -46,29 +46,32 @@
     align-items: center;       /* dikeyde ortala */
 }
 .product-manage-btn{
+    width: 150px;
     border-radius: 40px;
-    border: 1px solid black;
+    border: 1px solid rgb(37, 89, 65);
     font-family: "Roboto Thin";
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     cursor: pointer;
-    color: #ae3c33;
+    color: #255941;
     font-weight: normal;
 }
 .product-manage-btn:hover{
-    border: 2px solid black;
-    color: #ae3c33;
-    font-weight: bolder;
+    background-color: #254231;
+    border: 2px solid rgb(37, 89, 65);
+    color: #ffffff;
 }
 .titleheader{
     font-family: "Roboto Thin";
-    color: #254231;
-    font-size: xxx-large;
+    color: #255941;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-content: end;
+    flex-direction: column;
+    text-align: center;
 }
 .productlist{
+
     display: flex;
     gap: 30px;
     justify-content: center;

@@ -8,6 +8,7 @@
 
 }
 .user-profile{
+    display: flex;
     border-radius: 5%;
     background-color: white;
     height: 400px;
@@ -16,6 +17,8 @@
     opacity: 0;
     transform: translateX(-50px);
     transition: all 0.6s ease-out;
+    flex-direction: row;
+    justify-content: end;
 
 }
 .user-profile.show {
@@ -41,7 +44,47 @@
 }
 .human-image{
     height: 360px;
-
     border-radius: 5%;
 
+}
+.user-story-buton{
+    width: 150px;
+    margin-top: 30%;
+    margin-right: 10px;
+    border: 1px solid #ffffff;
+    font-family: "Roboto Thin";
+    background-color: #ffffff;
+    cursor: pointer;
+    color: rgb(37, 89, 65);
+    font-weight: normal;
+    height: 35px;
+}
+.user-story-buton:hover{
+    border: 2px solid #ffffff;
+    color: #255941;
+    font-weight: bolder;
+    transform: scale(1.03);
+}
+.deneme1{
+    display: flex;
+    justify-content: end;
+
+}
+.user-story-buton2{
+    width: 200px;
+    margin-top: 15%;
+    margin-left: 200px;
+    border: 1px solid #ffffff;
+    font-family: "Roboto Thin";
+    background-color: #ffffff;
+    cursor: pointer;
+    color: rgb(37, 89, 65);
+    font-weight: normal;
+    height: 35px;
+}
+.user-story-buton2:hover{
+    border: 2px solid #ffffff;
+    color: #255941;
+    font-weight: bolder;
+    transform: scale(1.03);
 }
