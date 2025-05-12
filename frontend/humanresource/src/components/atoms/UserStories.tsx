@@ -58,7 +58,6 @@ function UserStories() {
                             <button className="user-story-buton2">
                                 Read the User Story →
                             </button>
-
                         </div>
                     </div>
                 </div>
@@ -71,14 +70,13 @@ function UserStories() {
                             User Stories
                         </h1>
                         <hr/>
-                        <h5>
+                        <h4>
                             We’re simplifying HR together with thousands of human resources professionals. Discover how HR experts got started with Humin.
-                        </h5>
-                        <div className="deneme1">
-                            <button className="user-story-buton">
-                                Show all stories →
-                            </button>
-                        </div>
+                            Join a growing community that’s transforming HR into a more human-focused experience.
+                        </h4>
+                        <button className="user-story-buton">
+                            Show All Stories →
+                        </button>
 
                     </div>
                 </div>
