@@ -6,7 +6,7 @@ import FooterComponent from "../../components/molecules/FooterComponents.tsx";
 
 function HomePage(){
     return(
-        <div className="container-fluid">
+        <div className="container-xxl">
                 <HeaderComponent />
                 <Body />
                 <FooterComponent/>

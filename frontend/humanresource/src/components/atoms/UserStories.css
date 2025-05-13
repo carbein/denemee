@@ -58,12 +58,12 @@
     font-family: "Roboto Thin";
     background-color: #ffffff;
     cursor: pointer;
-    color: rgb(37, 89, 65);
+    color: rgb(0, 121, 107);
     font-weight: normal;
 }
 .user-story-buton:hover{
     border: 2px solid #ffffff;
-    color: #255941;
+    color:#00796B;
     font-weight: bolder;
     transform: scale(1.03);
 }
@@ -77,12 +77,15 @@
     font-family: "Roboto Thin";
     background-color: #ffffff;
     cursor: pointer;
-    color: rgb(37, 89, 65);
+    color: rgb(0, 121, 107);
     font-weight: normal;
 }
 .user-story-buton2:hover{
     border: 2px solid #ffffff;
-    color: #255941;
+    color: #00796b;
     font-weight: bolder;
     transform: scale(1.03);
+}
+.greycolor{
+    color: #6a8580;
 }

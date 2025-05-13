@@ -52,7 +52,7 @@ function UserStories() {
                             <h2>
                                 “One of the most enjoyable aspects of working with Humin is offering a great customer experience service.”
                             </h2>
-                            <h6>
+                            <h6 className="greycolor">
                                 Müge Tuğcu, Senior Employee Happiness and Corporate Transformation Manager
                             </h6>
                             <button className="user-story-buton2">
@@ -70,9 +70,9 @@ function UserStories() {
                             User Stories
                         </h1>
                         <hr/>
-                        <h4>
+                        <h4 className="greycolor">
                             We’re simplifying HR together with thousands of human resources professionals. Discover how HR experts got started with Humin.
-                            Join a growing community that’s transforming HR into a more human-focused experience.
+
                         </h4>
                         <button className="user-story-buton">
                             Show All Stories →

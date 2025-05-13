@@ -1,5 +1,5 @@
 .header-container{
-    background: linear-gradient(180deg, #254231, white);
+    background-image: url('/img/background.png');
     display: flex;
     gap: 20px; /* Butonlar arası boşluk */
     width: 100%;
@@ -12,44 +12,44 @@
     color: white;
     border: 2px solid white;
     border-radius: 40px;
-    padding: 8px;
-    font-size: 1rem;
+    padding: 5px;
+    font-size: 1.3rem;
     font-weight: 600;
     font-family: "Roboto Thin";
     cursor: pointer;
     transition: all 0.3s ease;
-    width: 120px;
+    width: 180px;
     height: 50px;
 }
 .login-btn:hover {
     background-color: white;
-    color: #beffb1 ;
+    color: #00796B ;
 }
 .signup-btn{
     background-color: white;
-    color: #254231;
+    color:  #00796B;
     border: 2px solid white;
     border-radius: 40px;
-    padding: 8px;
-    font-size: 1rem;
+    padding: 5px;
+    font-size: 1.3rem;
     font-weight: 600;
     font-family: "Roboto Thin";
     cursor: pointer;
     transition: all 0.3s ease;
-    width: 120px;
+    width: 180px;
     height: 50px;
 
 }
 .signup-btn:hover {
-    background-color: #beffb1 ;
-    border: #beffb1 ;
+    background-color: #00796B;
+    border: #00796B ;
     color: white;
 }
 .btn1{
     background-color: transparent;
     color: white;
     padding: 8px;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 600;
     font-family: "Roboto Thin";
     cursor: pointer;
@@ -60,11 +60,12 @@
 }
 .btn1:hover {
     background-color: transparent;
-    color: #beffb1;
+    color: #00796B;
 }
 .logo{
     margin-left: 40px;
-    width: 220px;
+
+    width: 300px;
     height: fit-content;
 }
 

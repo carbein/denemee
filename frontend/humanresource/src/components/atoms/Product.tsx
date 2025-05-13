@@ -1,11 +1,37 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Product.css';
+import {useEffect, useRef, useState} from "react";
 
 function Product(){
+
+    const titleRef = useRef(null);
+    const [titleVisible, setProfileVisible] = useState(false)
+
+    useEffect(() => {
+        const oberver3 = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setProfileVisible(true);
+                }
+            },
+            { threshold : 0.3}
+        );
+
+        if (titleRef.current) oberver3.observe(titleRef.current);
+
+        return () => {
+          oberver3.disconnect();
+        };
+
+    }, []);
+
     return(
         <div className="product-container">
-            <div className="titleheader">
-                <h1>PRODUCTS</h1>
+            <div
+                ref={titleRef}
+                className={`titleheader ${titleVisible ? 'show' : ''}`}
+            >
+                <h1>Products</h1>
                 <h4>Pricing based on your number of employees,
                     use as much as you want, pay as much as you use
                 </h4>
@@ -13,7 +39,7 @@ function Product(){
             <div className="productlist">
                 <div className="product">
                     <div className="product-header">
-                        <img className="small-image"   src="/img/personel.png"/>
+                        <img className="small-image"   src="/img/employee.png"/>
                         <h4 className="product-name-style">
                             Employee Management
                         </h4>
@@ -62,7 +88,7 @@ function Product(){
                 </div>
                 <div className="product">
                     <div className="product-header">
-                        <img className="small-image"   src="/img/zimmet.png"/>
+                        <img className="small-image"   src="/img/assets.png"/>
                         <h4 className="product-name-style">
                             Asset Management
                         </h4>
