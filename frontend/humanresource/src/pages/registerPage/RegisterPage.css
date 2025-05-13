@@ -1,23 +1,17 @@
-@font-face {
-    font-family: "Muli-Regular";
-    src: url("frontend/humanresource/public/fonts/muli/Muli-Regular.ttf"); }
-@font-face {
-    font-family: "Muli-SemiBold";
-    src: url("frontend/humanresource/public/fonts/muli/Muli-SemiBold.ttf"); }
-@font-face {
-    font-family: "Muli-Bold";
-    src: url("frontend/humanresource/public/fonts/muli/Muli-Bold.ttf"); }
+
 
 .RegisterPage {
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     height: 100vh;
-    min-height: 100vh;
-
-    background: linear-gradient(180deg, #254231, white);
+    padding-right: 40%;
+    padding-left: 40%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background: #e9ecea ;
 
 
 
@@ -27,9 +21,26 @@
 
     display: flex;
     flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 100vh;
 
-    min-height: 100%;
-    min-width: 100%;
+
+
+    border-radius: 50px;
+    background-color: #76cec2;
+
+
+
+}
+
+.input-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+
 
 
 
@@ -44,7 +55,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    margin-top: 5%;
+
 }
 
 
@@ -59,17 +70,7 @@
 
 }
 
-.input-area{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 60%;
-    margin-top: 17%;
 
-
-
-}
 
 .Name-group{
 
@@ -116,20 +117,29 @@
 
 }
 
-.button-register{
+.button-registerm{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 50%;
-    min-width: 100%;
 
+    margin-top: 15%;
+
+}
+
+.signup-btnm {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 40px;
+    padding: 5px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-family: "Roboto Thin";
     cursor: pointer;
-
-
-
-
-
+    transition: all 0.3s ease;
+    width: 180px;
+    height: 50px;
 }
 
 .to-register{
@@ -143,25 +153,13 @@
 }
 
 #ar{
-
-    color: #254231  ;
-    font-family: Muli-Bold,sans-serif;
+    color: white  ;
+    font-weight: 300;
+    font-family: "Roboto Thin";
     font-size: 20px;
-    margin-top: 25%;
+    margin-top: 15%;
 
 
 }
 
 
-#h3r{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    max-height: 2%;
-    margin-bottom: 15%;
-    color: #ffffff;
-    font-family: Muli-SemiBold, sans-serif;
-
-}
