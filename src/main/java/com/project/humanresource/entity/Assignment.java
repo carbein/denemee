@@ -1,19 +1,27 @@
 package com.project.humanresource.entity;
 
 import com.project.humanresource.utility.AssignmentCategory;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
+
 import java.time.LocalDate;
 
-@Getter
-@Setter
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Table(name = "tblassignment")
 public class Assignment {
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     private String description;
     private AssignmentCategory category;
     private String serialNumber;
     private LocalDate assignmentDate;
     private LocalDate returnDate;
-    private Employee employee;
+    private Long employeeId;
 }
 

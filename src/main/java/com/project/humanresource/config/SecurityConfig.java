@@ -22,7 +22,7 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth->auth
-                        .requestMatchers(
+                        .requestMatchers("/dev/v1/register","/dev/v1/shift","/dev/v1/employee",
                                 "/swagger-ui/**","/v3/api-docs/**",
                                 "/api/auth/**","/api/public/**"
                         ).permitAll()

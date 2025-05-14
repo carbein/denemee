@@ -1,45 +1,25 @@
 package com.project.humanresource.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
-@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tblemployee")
-public class Employee {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    @Column(nullable = false,length = 50)
+@SuperBuilder
+public class Employee extends User{
+
     String firstName;
-
-    @Column(nullable = false,length = 50)
     String lastName;
-
-    @Column(length = 100)
-    String emailWork;
-
-    @Column(length = 15)
     String phoneWork;
-
-    @Column(nullable = false)
     Long companyId;
-
-    @Column(nullable = false)
+    String companyName;
+    String title;
     Long titleId;
-
-    @Column(nullable = false)
     Long personalFiledId;
-
-    @Column(nullable = false)
     Long userId;
-
-
 }

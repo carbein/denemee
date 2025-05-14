@@ -1,11 +1,24 @@
 package com.project.humanresource.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.project.humanresource.utility.UserStatus;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
-@Getter
-@Setter
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "userrole")
 public class UserRole {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name; // employee, company manager, site admin
+    private UserStatus userStatus;
+    private Long userId; // employee, company manager, site admin
+
 } 

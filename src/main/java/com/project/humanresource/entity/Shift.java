@@ -24,5 +24,6 @@ public class Shift {
     LocalDateTime startTime;
     LocalDateTime endTime;
     String description;
+    List<Long> employeeIds;
     List<Long> shiftBreakIds;
 }

@@ -1,21 +1,22 @@
 package com.project.humanresource.controller;
 
+import com.project.humanresource.entity.User;
 import com.project.humanresource.entity.UserRole;
 import com.project.humanresource.service.UserRoleService;
 import com.project.humanresource.dto.response.BaseResponse;
+import com.project.humanresource.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/user-roles")
 public class UserRoleController {
-    private final UserRoleService userRoleService;
 
-    @Autowired
-    public UserRoleController(UserRoleService userRoleService) {
-        this.userRoleService = userRoleService;
-    }
+    private final UserRoleService userRoleService;
+    private final UserService userService;
 
     @PostMapping
     public ResponseEntity<BaseResponse<UserRole>> createRole(@RequestBody UserRole userRole) {
@@ -24,12 +25,12 @@ public class UserRoleController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/by-name")
-    public ResponseEntity<BaseResponse<UserRole>> getRoleByName(@RequestParam String name) {
-        UserRole role = userRoleService.findByName(name).orElse(null);
-        if (role == null) {
-            return ResponseEntity.ok(new BaseResponse<>(false, "Role not found", null));
+    @GetMapping("/by-email")
+    public ResponseEntity<BaseResponse<User>> getUserByEmail(@RequestParam String email) {
+        User user = userService.findByEmail(email).orElse(null);
+        if (user == null) {
+            return ResponseEntity.ok(new BaseResponse<>(false, "User not found", null));
         }
-        return ResponseEntity.ok(new BaseResponse<>(true, "Role found", role));
+        return ResponseEntity.ok(new BaseResponse<>(true, "User found", user));
     }
 } 

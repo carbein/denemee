@@ -6,12 +6,13 @@ import FooterComponent from "../../components/molecules/FooterComponents.tsx";
 
 function HomePage(){
     return(
-        <div className="container-xxl">
-                <HeaderComponent />
-                <Body />
-                <FooterComponent/>
+        <div className="container-xxl px-0 background">
+            <HeaderComponent/>
+            <Body/>
+            <FooterComponent/>
         </div>
 
     )
 }
+
 export default HomePage

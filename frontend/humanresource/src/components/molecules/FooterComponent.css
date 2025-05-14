@@ -4,8 +4,12 @@
     padding-inline: 100px;
     padding-block: 40px;
     color: #ffffff;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 .logo1{
+
+    margin-left: 15px;
     width: 200px;
     height: fit-content;
 }

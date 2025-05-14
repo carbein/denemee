@@ -6,7 +6,7 @@ function FooterComponent(){
         <div className="footer-container row">
             <div className="col-8">
                 <div>
-                    <img className="logo1" src="/img/logo.png" alt="logo" />
+                    <img className="logo1" src="/img/logo1.png" alt="logo" />
                 </div>
                 <div className="mt-2 m-lg-3">
                     <a id="footer" href="https://www.google.com/maps/dir//YDA+Center,+K%C4%B1z%C4%B1l%C4%B1rmak,+06510+%C3%87ankaya%2FAnkara/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x14d348b2a8a8bb1b:0x6fc94f4a1deecb8a?sa=X&ved=1t:57443&ictx=111">

@@ -40,7 +40,7 @@ public class JwtUserDetails implements UserDetailsService {
         List<UserRole> userRolesList =userRoleService.findAllRole(userId); // bu role listesini grandauthority listesine ekliyoruz.
 
         userRolesList.forEach(userRole -> {
-            grantedAuthorities.add(new SimpleGrantedAuthority(userRole.getName()));
+            grantedAuthorities.add(new SimpleGrantedAuthority(userRole.getUserStatus().name()));
         });
 
         return org.springframework.security.core.userdetails.User.builder()

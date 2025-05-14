@@ -1,5 +1,5 @@
 .header-container{
-    background-image: url('/img/background.png');
+
     display: flex;
     gap: 20px; /* Butonlar arası boşluk */
     width: 100%;
@@ -64,7 +64,6 @@
 }
 .logo{
     margin-left: 40px;
-
     width: 300px;
     height: fit-content;
 }
@@ -89,16 +88,52 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
 }
 .commercial{
+    margin-top: 40px;
     width: 100%;
     display: flex;
     justify-content: center;
 
 }
 .slogan{
+    margin-top: 50px;
     width: 100%;
     display: flex;
     justify-content: center;
     font-family: "Roboto Thin";
     font-size: xxx-large;
     font-weight: bolder;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.12);
+}
+/* Sadece arka alanı blurla */
+.blur-zone.blurred {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+}
+
+/* Menü görünsün, bulanık olmasın */
+.products-dropdown {
+
+    font-family: "Roboto Thin";
+    position: absolute;
+    top: 70px; /* Butonun altına hizalar */
+    left: 35px;
+    background: rgba(255, 255, 255, 0.78);
+    z-index: 1000;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    width: 230px;
+}
+
+.products-dropdown .dropdown-item {font-weight: bold;
+    display: block;
+    padding: 8px 8px;
+    text-decoration: none;
+    color: #00796B;
+}
+
+.products-dropdown .dropdown-item:hover {
+    font-weight: bolder;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
 }
