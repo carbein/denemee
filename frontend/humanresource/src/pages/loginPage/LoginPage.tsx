@@ -11,14 +11,15 @@ function LoginPage(){
     return (
 <div className="loginPage" >
 
+
     <div className="container" >
 
         <div className="input-area">
-            <div className="logol">
-                <img src="/img/logo.png" alt="logo"/>
-            </div>
+
             <form className="login-form" >
-                <h3 id="h3l">LOGIN</h3>
+                <div className="logol">
+                    <img src="/img/logo.png" alt="logo" width="200px" />
+                </div>
                 <div className="E-mail-group">
                     <label className="Label">E-mail</label>
                     <input type="text" name="Email Area" className="E-mail Input"/>
@@ -27,8 +28,8 @@ function LoginPage(){
                     <label className="Label">Password</label>
                     <input type="password" name="Password Area" className="Password Input" />
                 </div>
-                <div className="button-login">
-                    <button className="login-btn"  >LOG IN</button>
+                <div className="button-loginm">
+                    <button className="login-btnm"  >LOG IN</button>
                 </div>
                 <div className='to-login'>
                     <a id="al" href="/register">create new account</a>

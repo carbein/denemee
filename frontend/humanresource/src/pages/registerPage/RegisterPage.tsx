@@ -6,12 +6,13 @@ function RegisterPage(){
             <div className="container" >
 
                 <div className="input-area">
-                    <div className="logor">
-                        <img src="/img/logo.png" alt="logo"/>
-                    </div>
+
 
                     <form className="register-form" >
-                        <h3 id="h3r">REGISTER</h3>
+                        <div className="logor">
+                            <img src="/img/logo.png" alt="logo" width="200px" />
+                        </div>
+
                         <div className="Name-group">
                             <label className="Label" >Name</label>
                             <input type="text" name="Name-Area" className="Name Input"/>
@@ -32,8 +33,8 @@ function RegisterPage(){
                             <label className="Label">Confirm Password</label>
                             <input type="password" name="Password Area" className="Password Input" />
                         </div>
-                        <div className="button-register">
-                            <button className="signup-btn ">SIGN UP</button>
+                        <div className="button-registerm">
+                            <button className="signup-btnm ">SIGN UP</button>
                         </div>
                         <div className='to-register'>
                             <a id="ar" href="/login">Back to Login</a>
