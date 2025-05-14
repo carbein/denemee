@@ -1,7 +1,6 @@
 package com.project.humanresource.dto.request;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public record AddShiftRequestDto(
 
@@ -9,7 +8,8 @@ public record AddShiftRequestDto(
         LocalDateTime startTime,
         LocalDateTime endTime,
         String description,
-        Long employeeName,
+        String employeeFirstName,
+        String employeeLastName,
         Long shiftBreakId
 
 ) {

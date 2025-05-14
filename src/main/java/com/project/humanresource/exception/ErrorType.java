@@ -11,16 +11,14 @@ import static org.springframework.http.HttpStatus.*;
 public enum ErrorType {
 
 
-    BADREQUEST(4002, "Girilen parametereler hatalıdır.",BAD_REQUEST),
-    SIFREHATASI(4003, "Girişlen şifreler bir biri ile uyuşumamaktadır.",BAD_REQUEST),
-    EMAIL_SIFRE_HATASI(4004, "Kullanıcı adı ya da şifre hatalısır", BAD_REQUEST),
-    EXISTED_KATEGORI(4005, "Bu kategori zaten kayıtlıdır.", BAD_REQUEST),
-    URUN_NOTFOUND(2001, "Id si verilen ürün bulunamadı", INTERNAL_SERVER_ERROR),
-    SEPET_NOTFOUND(2002, "KullanıcıId si verilen sepet e ait kayıt bulunamadı", INTERNAL_SERVER_ERROR),
-    SEPET_URUN_NOTFOUND(2003, "Id si verilen ürün ilgili sepette bulunamadı", INTERNAL_SERVER_ERROR),
-    INVALID_TOKEN(4999, "Geçersiz token bilgisi", FORBIDDEN),
-    USER_NOTFOUND(2004,"Kullanıcı bulunamadı",INTERNAL_SERVER_ERROR),
-    INTERNAL_SERVER(5000, "Sunucuda beklenmeyen bir hata",INTERNAL_SERVER_ERROR);
+    BADREQUEST(4002, "The provided parameters are invalid.", BAD_REQUEST),
+    PASSWORD_MISMATCH(4003, "The entered passwords do not match.", BAD_REQUEST),
+    EMAIL_PASSWORD_ERROR(4004, "Incorrect username or password.", BAD_REQUEST),
+    CATEGORY_ALREADY_EXISTS(4005, "This category is already registered.", BAD_REQUEST),
+    INVALID_TOKEN(4999, "Invalid token information.", FORBIDDEN),
+    USER_NOT_FOUND(2004, "User not found.", INTERNAL_SERVER_ERROR),
+    INTERNAL_SERVER(5000, "An unexpected error occurred on the server.", INTERNAL_SERVER_ERROR),
+    EMPLOYEE_NOT_FOUND(5001, "Employee not found.", BAD_REQUEST);
 
 
     int code;
