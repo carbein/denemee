@@ -4,6 +4,7 @@ import com.project.humanresource.entity.User;
 import com.project.humanresource.entity.UserRole;
 import com.project.humanresource.repository.UserRepository;
 import com.project.humanresource.repository.UserRoleRepository;
+import com.project.humanresource.utility.UserStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,17 +26,11 @@ public class UserRoleService {
         return userRoleRepository.save(userRole);
     }
 
-    public Optional<UserRole> findByName(String name) {
-        return userRoleRepository.findByName(name);
-    }
-
-    public UserRole findRoleByUserId(Long userId) {
-        return userRepository.findById(userId)
-            .map(User::getUserRole)
-            .orElse(null);
+    public Optional<UserRole> findByUserStatus(UserStatus userStatus) {
+        return userRoleRepository.findByUserStatus(userStatus);
     }
 
     public List<UserRole> findAllRole(Long userId){
         return userRoleRepository.findByUserId(userId);
     }
-} 
+}

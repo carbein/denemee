@@ -32,9 +32,9 @@ function Product(){
                 className={`titleheader ${titleVisible ? 'show' : ''}`}
             >
                 <h1>Products</h1>
-                <h4>Pricing based on your number of employees,
-                    use as much as you want, pay as much as you use
-                </h4>
+                <h4>Pricing based on your number of employees,</h4>
+                <h4>use as much as you want, pay as much as you use</h4>
+
             </div>
             <div className="productlist">
                 <div className="product">

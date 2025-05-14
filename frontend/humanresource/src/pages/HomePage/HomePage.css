@@ -4,3 +4,11 @@
 .flex-grow-6 {
     flex-grow: 6;
 }
+.background{
+    background-image: url('/img/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    display: block;
+}
