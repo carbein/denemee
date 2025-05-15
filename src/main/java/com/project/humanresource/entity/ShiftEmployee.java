@@ -14,11 +14,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "tblshiftemployee")
-public class ShiftEmployee {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+public class ShiftEmployee extends BaseEntity {
+
     Long shiftId;
     Long employeeId;
     LocalDateTime assignmentDate;
+
 }

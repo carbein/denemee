@@ -16,14 +16,13 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "tblshift")
-public class Shift {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+public class Shift extends BaseEntity {
+
     String name;
     LocalDateTime startTime;
     LocalDateTime endTime;
     String description;
-    List<Long> employeeIds;
-    List<Long> shiftBreakIds;
+
+
+
 }

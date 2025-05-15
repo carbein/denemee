@@ -13,15 +13,13 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 @Table(name = "tblassignment")
-public class Assignment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    private String description;
-    private AssignmentCategory category;
-    private String serialNumber;
-    private LocalDate assignmentDate;
-    private LocalDate returnDate;
-    private Long employeeId;
+public class Assignment extends BaseEntity {
+
+    String description;
+    AssignmentCategory category;
+    String serialNumber;
+    LocalDate assignmentDate;
+    LocalDate returnDate;
+    Long employeeId;
 }
 

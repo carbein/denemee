@@ -3,6 +3,8 @@ package com.project.humanresource.entity;
 import com.project.humanresource.utility.LeaveTypes;
 import com.project.humanresource.utility.StateTypes;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,14 +18,27 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "tblleave")
-public class Leave {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+public class Leave extends BaseEntity {
+
+
+    @NotNull
     LocalDateTime startDate;
+
+    @NotNull
     LocalDateTime endDate;
+
+    @Size(max=250)
     String description;
+    @Enumerated(EnumType.STRING)
+            @NotNull
     LeaveTypes leaveType;
+    @Enumerated(EnumType.STRING)
+            @NotNull
     StateTypes state;
     Long employeeId;
+
+
+    Long approvedByUserId;  // onaylayan kişinin id'si
+
+
 }

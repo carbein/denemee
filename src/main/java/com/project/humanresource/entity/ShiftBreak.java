@@ -14,10 +14,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "tblshiftbreak")
-public class ShiftBreak {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+public class ShiftBreak extends BaseEntity {
+
     LocalDateTime startTime;
     LocalDateTime endTime;
+
+
 }

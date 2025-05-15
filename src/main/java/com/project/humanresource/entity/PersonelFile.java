@@ -4,11 +4,13 @@ import com.project.humanresource.utility.EducationLevel;
 import com.project.humanresource.utility.Gender;
 import com.project.humanresource.utility.MaritalStatus;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Builder
@@ -17,29 +19,40 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "tblpersonelfile")
-public class PersonelFile {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+public class PersonelFile  extends  BaseEntity{
+
+
+    @Enumerated(EnumType.STRING)
     Gender gender;
+
+    @Past
     Date birthdate;
-    @Column(length = 15)
+    @Pattern(regexp = "^\\d{11}$")
     String personalPhone;
-    @Column(length = 100)
+    @Email
     String personalEmail;
     @Column(length = 11,unique=true)
     String nationalId;
 
+    @Enumerated(EnumType.STRING)
     EducationLevel educationLevel;
+    @Enumerated(EnumType.STRING)
     MaritalStatus maritalStatus;
+
     Byte numberOfChildren;
     String address;
     String city;
-    @Column(length = 26)
+    @Size(min=26,max=26)
     String iban;
     String bankName;
     String bankAccountNumber;
     String bankAccountType;
+
+    @NotNull
+    Long employeeId;
+
+    LocalDateTime createAt=LocalDateTime.now();
+
 
 
 

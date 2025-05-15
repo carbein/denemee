@@ -16,5 +16,5 @@ public class Title {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String title;
-    Long  employerId;
+
 }

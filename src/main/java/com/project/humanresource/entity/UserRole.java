@@ -14,11 +14,11 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @Entity
 @Table(name = "userrole")
-public class UserRole {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private UserStatus userStatus;
-    private Long userId; // employee, company manager, site admin
+public class UserRole extends BaseEntity {
+
+    @Enumerated(EnumType.STRING)
+    @Column(unique = true, nullable = false)
+    UserStatus userStatus;
+    Long userId; // employee, company manager, site admin
 
 } 

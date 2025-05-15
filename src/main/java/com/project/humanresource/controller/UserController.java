@@ -2,7 +2,6 @@ package com.project.humanresource.controller;
 
 import com.project.humanresource.entity.User;
 import com.project.humanresource.service.UserService;
-import com.project.humanresource.dto.response.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
