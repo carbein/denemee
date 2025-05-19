@@ -1,8 +1,8 @@
 package com.project.humanresource.utility;
 
 public enum UserStatus {
-    Admin,
-    Employee,
-    Manager,
-    Pending
+    SITE_ADMIN,
+    EMPLOYEE,
+    COMPANY_ADMIN,
+    PENDING
 }
