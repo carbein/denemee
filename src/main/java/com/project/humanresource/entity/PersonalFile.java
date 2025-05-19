@@ -1,5 +1,6 @@
 package com.project.humanresource.entity;
 
+import com.project.humanresource.utility.BloodType;
 import com.project.humanresource.utility.EducationLevel;
 import com.project.humanresource.utility.Gender;
 import com.project.humanresource.utility.MaritalStatus;
@@ -19,7 +20,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "tblpersonelfile")
-public class PersonelFile  extends  BaseEntity{
+public class PersonalFile extends  BaseEntity{
 
 
     @Enumerated(EnumType.STRING)
@@ -38,6 +39,8 @@ public class PersonelFile  extends  BaseEntity{
     EducationLevel educationLevel;
     @Enumerated(EnumType.STRING)
     MaritalStatus maritalStatus;
+    @Enumerated(EnumType.STRING)
+    BloodType bloodType;
 
     Byte numberOfChildren;
     String address;

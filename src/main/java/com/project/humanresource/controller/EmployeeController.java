@@ -2,6 +2,7 @@ package com.project.humanresource.controller;
 
 import com.project.humanresource.config.JwtTokenFilter;
 import com.project.humanresource.dto.request.AddEmployeeRequestDto;
+import com.project.humanresource.dto.request.SetPersonelFileRequestDto;
 import com.project.humanresource.dto.response.BaseResponse;
 import com.project.humanresource.entity.Company;
 import com.project.humanresource.entity.User;
@@ -46,6 +47,16 @@ public class EmployeeController {
                 .code(200)
                 .data(true)
                 .message("Çalışan başarıyla eklendi.")
+                .build());
+    }
+    //@PreAuthorize("hasAuthority('EMPLOYEE')")
+    @PostMapping("/personel-file")
+    public ResponseEntity<BaseResponse<Boolean>> setPersonelFile(@RequestBody @Valid SetPersonelFileRequestDto dto){
+        employeeService.setPersonelFile(dto);
+        return ResponseEntity.ok(BaseResponse.<Boolean>builder()
+                        .code(200)
+                        .message("Özlük bilgileri başarıyla kaydedildi")
+                        .data(true)
                 .build());
     }
 

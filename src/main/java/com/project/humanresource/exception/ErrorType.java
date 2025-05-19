@@ -18,6 +18,8 @@ public enum ErrorType {
     CATEGORY_ALREADY_EXISTS(4005, "This category is already registered.", BAD_REQUEST),
     INVALID_TOKEN(4999, "Invalid user information.", FORBIDDEN),
     INVALID_PASSWORD(4007, "Invalid password.", FORBIDDEN),
+    UNAUTHORIZED(4010, "Unauthorized.", FORBIDDEN),
+    DUPLICATE_PERSONAL_FILE(4011, "Duplicate personal file.", FORBIDDEN),
     EXPIRED_TOKEN(4998,"Expired session",INTERNAL_SERVER_ERROR),
     USED_TOKEN(4997,"Used session",BAD_REQUEST),
     MAIL_SEND_FAILED(4800,"Email could not be sent",BAD_REQUEST),

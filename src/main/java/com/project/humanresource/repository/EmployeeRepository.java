@@ -14,4 +14,5 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     List<Employee>  findAllByTitleId(Long titleId);     //      unvana göre çalışanlar
 
 
+    Optional<Employee> findByUserId(Long userId);
 }
