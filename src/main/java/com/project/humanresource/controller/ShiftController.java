@@ -18,15 +18,15 @@ import static com.project.humanresource.config.RestApis.SHIFT;
 @SecurityRequirement(name = "bearerAuth")
 public class ShiftController {
 
-    private final ShiftService shiftService;
-
-    @PostMapping(SHIFT)
-    public ResponseEntity<BaseResponse<Shift>> addShift(@RequestBody AddShiftRequestDto dto){
-        return ResponseEntity.ok(BaseResponse.<Shift>builder()
-                        .message("Shift added successfully")
-                        .code(200)
-                        .data(shiftService.addShift(dto))
-                .build());
-    }
+//    private final ShiftService shiftService;
+//
+//    @PostMapping(SHIFT)
+//    public ResponseEntity<BaseResponse<Shift>> addShift(@RequestBody AddShiftRequestDto dto){
+//        return ResponseEntity.ok(BaseResponse.<Shift>builder()
+//                        .message("Shift added successfully")
+//                        .code(200)
+//                        .data(shiftService.addShift(dto))
+//                .build());
+//    }
 
 }

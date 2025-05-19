@@ -1,16 +1,52 @@
 package com.project.humanresource.controller;
 
+import com.project.humanresource.config.JwtTokenFilter;
+import com.project.humanresource.dto.request.AddEmployeeRequestDto;
+import com.project.humanresource.dto.response.BaseResponse;
+import com.project.humanresource.entity.Company;
+import com.project.humanresource.entity.User;
+import com.project.humanresource.repository.CompanyRepository;
+import com.project.humanresource.repository.UserRepository;
+import com.project.humanresource.service.EmployeeService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
+
+import static com.project.humanresource.config.RestApis.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping()
+@RequestMapping(EMPLOYEE)
 @CrossOrigin("*")
 @SecurityRequirement(name = "bearerAuth")
 public class EmployeeController {
+
+    private final EmployeeService employeeService;
+    private final JwtTokenFilter jwtTokenFilter;
+    private final UserRepository userRepository;
+    private final CompanyRepository companyRepository;
+
+    @PreAuthorize("hasAuthority('COMPANY_ADMIN')")
+    @PostMapping("/add")
+    public ResponseEntity<BaseResponse<Boolean>> addEmployee (@RequestBody @Valid AddEmployeeRequestDto dto){
+
+        // Login olan kullanıcının email bilgisi JWT'den alınır (SecurityContext üzerinden)
+        String currentEmail= SecurityContextHolder.getContext().getAuthentication().getName();
+
+        User user=userRepository.findByEmail(currentEmail).orElseThrow(()->new RuntimeException("Kullanıcı bulunamadı"));
+
+        Company company=companyRepository.findByUserId(user.getId()).orElseThrow(()-> new RuntimeException("Şirket bulunamadı"));
+
+        employeeService.addEmployee(dto,company.getId());
+        return ResponseEntity.ok(BaseResponse.<Boolean>builder()
+                .code(200)
+                .data(true)
+                .message("Çalışan başarıyla eklendi.")
+                .build());
+    }
 
 }

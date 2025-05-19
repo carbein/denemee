@@ -6,10 +6,11 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
-@Builder
+@SuperBuilder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,7 +37,7 @@ public class Company extends BaseEntity {
 
     LocalDateTime membershipExpiryDate;
 
-    Long employerId;
+    Long userId;
 
 
 }

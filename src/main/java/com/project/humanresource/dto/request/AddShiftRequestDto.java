@@ -7,10 +7,7 @@ public record AddShiftRequestDto(
         String name,
         LocalDateTime startTime,
         LocalDateTime endTime,
-        String description,
-        String employeeFirstName,
-        String employeeLastName,
-        Long shiftBreakId
+        String description
 
 ) {
 }

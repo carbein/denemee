@@ -33,4 +33,11 @@ public class UserRoleService {
     public List<UserRole> findAllRole(Long userId){
         return userRoleRepository.findByUserId(userId);
     }
+
+    UserStatus resolveUserStatus(Long roleId) {
+        if (roleId == null || roleId >= UserStatus.values().length) {
+            return UserStatus.Pending;
+        }
+        return UserStatus.values()[roleId.intValue()];
+    }
 }

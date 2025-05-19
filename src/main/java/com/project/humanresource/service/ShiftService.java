@@ -20,20 +20,20 @@ public class ShiftService {
     public final ShiftRepository shiftRepository;
     private final EmployeeRepository employeeRepository;
 
-    public Shift addShift(AddShiftRequestDto dto) {
-        Employee employee = employeeRepository
-                .findByFirstNameAndLastName(dto.employeeFirstName(), dto.employeeLastName())
-                .orElseThrow(() -> new HumanResourceException(ErrorType.EMPLOYEE_NOT_FOUND));
-
-        Shift shift = Shift.builder()
-                .name(dto.name())
-                .startTime(dto.startTime())
-                .endTime(dto.endTime())
-                .description(dto.description())
-                .employeeIds(List.of(employee.getId()))
-                .shiftBreakIds(List.of(dto.shiftBreakId()))
-                .build();
-        shiftRepository.save(shift);
-        return shift;
-    }
+//    public Shift addShift(AddShiftRequestDto dto) {
+//        Employee employee = employeeRepository
+//                .findByFirstNameAndLastName(dto.employeeFirstName(), dto.employeeLastName())
+//                .orElseThrow(() -> new HumanResourceException(ErrorType.EMPLOYEE_NOT_FOUND));
+//
+//        Shift shift = Shift.builder()
+//                .name(dto.name())
+//                .startTime(dto.startTime())
+//                .endTime(dto.endTime())
+//                .description(dto.description())
+//                .employeeIds(List.of(employee.getId()))
+//                .shiftBreakIds(List.of(dto.shiftBreakId()))
+//                .build();
+//        shiftRepository.save(shift);
+//        return shift;
+//    }
 }

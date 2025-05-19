@@ -17,10 +17,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-     Long id;
+public class User extends BaseEntity {
+
     @NotBlank
     @Column(unique = true)
     @Size(min = 6)
@@ -31,10 +29,10 @@ public class User {
             message = "Password must be at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number"
     )
      String password;
-     boolean isActive = false;
+     boolean isVerified = false;
 
     @NotNull
      Long userRoleId;
 
-    LocalDateTime createdAt = LocalDateTime.now();
+
 }

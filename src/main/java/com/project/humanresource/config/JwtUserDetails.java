@@ -27,15 +27,17 @@ public class JwtUserDetails implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        throw new UsernameNotFoundException("Kullanıcı adıyla giriş desteklenmiyor");
+        // return null;
     }
 
     public UserDetails loadUserById(Long userId) {
-        Optional<User> user = userService.findById(userId);
-        if (user.isPresent()) {
+        Optional<User> userOpt = userService.findById(userId);
+        if (userOpt.isPresent()) {
             throw new UsernameNotFoundException("User not found with ID: " + userId); // bakılacak
             //return null;
         }
+        User user= userOpt.get();
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();  // user role servisinden userId sine ait rollerin listesini çekiyoruz.
         List<UserRole> userRolesList =userRoleService.findAllRole(userId); // bu role listesini grandauthority listesine ekliyoruz.
 
@@ -44,8 +46,8 @@ public class JwtUserDetails implements UserDetailsService {
         });
 
         return org.springframework.security.core.userdetails.User.builder()
-                .username(user.get().getEmail())
-                .password(user.get().getPassword())
+                .username(user.getEmail())
+                .password(user.getPassword())
                 .accountLocked(false)
                 .accountExpired(false)
                 .authorities(grantedAuthorities)

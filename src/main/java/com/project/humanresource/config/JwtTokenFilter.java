@@ -1,5 +1,6 @@
 package com.project.humanresource.config;
 
+import com.project.humanresource.dto.JwtUserData;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,9 +32,11 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
         if (Objects.nonNull(requestHeaderAuthorization) && requestHeaderAuthorization.startsWith("Bearer ")) {
             String token=requestHeaderAuthorization.substring(7);
-            Optional<Long> userId=jwtManager.validateToken(token);
-            if (userId.isPresent()) {
-                UserDetails userDetails=jwtUserDetails.loadUserById(userId.get());
+            Optional<JwtUserData> userDataOpt=jwtManager.validateToken(token);
+            if (userDataOpt.isPresent()) {
+                JwtUserData userData=userDataOpt.get();
+
+                UserDetails userDetails=jwtUserDetails.loadUserById(userData.userId());
                 UsernamePasswordAuthenticationToken springToken=new
                         UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(springToken);

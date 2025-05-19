@@ -16,19 +16,19 @@ public class UserRoleController {
     private final UserRoleService userRoleService;
     private final UserService userService;
 
-    @PostMapping
-    public ResponseEntity<BaseResponse<UserRole>> createRole(@RequestBody UserRole userRole) {
-        UserRole saved = userRoleService.save(userRole);
-        BaseResponse<UserRole> response = new BaseResponse<>(true, "Role created", saved);
-        return ResponseEntity.ok(response);
-    }
-
-    @GetMapping("/by-email")
-    public ResponseEntity<BaseResponse<User>> getUserByEmail(@RequestParam String email) {
-        User user = userService.findByEmail(email).orElse(null);
-        if (user == null) {
-            return ResponseEntity.ok(new BaseResponse<>(false, "User not found", null));
-        }
-        return ResponseEntity.ok(new BaseResponse<>(true, "User found", user));
-    }
+//    @PostMapping
+//    public ResponseEntity<BaseResponse<UserRole>> createRole(@RequestBody UserRole userRole) {
+//        UserRole saved = userRoleService.save(userRole);
+//        BaseResponse<UserRole> response = new BaseResponse<>(true, "Role created", saved);
+//        return ResponseEntity.ok(response);
+//    }
+//
+//    @GetMapping("/by-email")
+//    public ResponseEntity<BaseResponse<User>> getUserByEmail(@RequestParam String email) {
+//        User user = userService.findByEmail(email).orElse(null);
+//        if (user == null) {
+//            return ResponseEntity.ok(new BaseResponse<>(false, "User not found", null));
+//        }
+//        return ResponseEntity.ok(new BaseResponse<>(true, "User found", user));
+//    }
 } 

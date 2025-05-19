@@ -20,7 +20,9 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   mail:
-    username: elifcangoktepe@gmail.com
+    host: smpt.gmail.com
+    port: 587
+    username: ser.deneme.info@gmail.com
     password: jynohncfzxegpmrz
     properties:
       mail:
@@ -29,8 +31,8 @@ spring:
           starttls:
             enable: true
 
-
-
+my-jwt:
+  secret-key: "sadf341234dob21398423vksa9834jlDASD"
 
 springdoc:
   swagger-ui:
