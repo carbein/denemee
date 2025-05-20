@@ -45,7 +45,7 @@ public class UserService {
                 .password(dto.password())
                 .isActive(false)
                 .isVerified(false)
-                .userRoleId((long) UserStatus.Pending.ordinal())     // Enum id si olarak atanıyor.
+                .userRoleId((long) UserStatus.PENDING.ordinal())     // Enum id si olarak atanıyor.
                 .build();
 
         userRepository.save(user);
@@ -86,7 +86,7 @@ public class UserService {
         if (dto.approved()) { // onayladıktan sonra şirket aktif ve pasifliği belli olur.
             user.setVerified(true);
             user.setActive(true);
-            user.setUserRoleId((long) UserStatus.Manager.ordinal());     // onayladıktan sonra şirket yöneticisi olur
+            user.setUserRoleId((long) UserStatus.COMPANY_ADMIN.ordinal());     // onayladıktan sonra şirket yöneticisi olur
 
             company.setActive(true);
             company.setVerified(true);
@@ -124,7 +124,7 @@ public class UserService {
         User user=User.builder()
                 .email(email)
                 .password(password)
-                .userRoleId((long) UserStatus.Employee.ordinal())
+                .userRoleId((long) UserStatus.EMPLOYEE.ordinal())
                 .isActive(true)
                 .isVerified(true)
                 .build();

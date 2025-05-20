@@ -36,7 +36,7 @@ public class UserRoleService {
 
     UserStatus resolveUserStatus(Long roleId) {
         if (roleId == null || roleId >= UserStatus.values().length) {
-            return UserStatus.Pending;
+            return UserStatus.PENDING;
         }
         return UserStatus.values()[roleId.intValue()];
     }

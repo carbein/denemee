@@ -21,7 +21,7 @@ public class Department  extends BaseEntity{
     @NotBlank
     String departmentName;
     @NotNull
-    Long companyBranchId;
+    Long companyId;
 
 
 }

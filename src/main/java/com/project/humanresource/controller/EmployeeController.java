@@ -2,6 +2,7 @@ package com.project.humanresource.controller;
 
 import com.project.humanresource.config.JwtTokenFilter;
 import com.project.humanresource.dto.request.AddEmployeeRequestDto;
+import com.project.humanresource.dto.request.AssignTitleToEmployeeRequestDto;
 import com.project.humanresource.dto.request.SetPersonelFileRequestDto;
 import com.project.humanresource.dto.response.BaseResponse;
 import com.project.humanresource.entity.Company;
@@ -57,6 +58,51 @@ public class EmployeeController {
                         .code(200)
                         .message("Özlük bilgileri başarıyla kaydedildi")
                         .data(true)
+                .build());
+    }
+
+    //@PreAuthorize("hasAuthority('COMPANY_ADMIN')")
+    @PostMapping("/assign-title")
+    public ResponseEntity<BaseResponse<Boolean>> assignTitleToemployee(@RequestBody AssignTitleToEmployeeRequestDto dto){
+        employeeService.assignTitleToEmployee(dto);
+
+        return ResponseEntity.ok(BaseResponse.<Boolean>builder()
+                        .code(200)
+                        .data(true)
+                        .message("Unvan çalışana başarıyla atandı")
+                .build());
+    }
+
+   // @PreAuthorize("hasAuthority('COMPANY_ADMIN')")
+    @PutMapping("/{employeeId}")
+    public ResponseEntity<BaseResponse<Boolean>> deactiveEmployee(@PathVariable Long employeeId){
+        employeeService.setEmployeeActiveStatus(employeeId,false);
+        return ResponseEntity.ok(BaseResponse.<Boolean>builder()
+                        .code(200)
+                        .message("Çalışan pasif hale getirildi")
+                        .data(true)
+                .build());
+    }
+
+    // @PreAuthorize("hasAuthority('COMPANY_ADMIN')")
+    @DeleteMapping("/{employeeId}")
+    public ResponseEntity<BaseResponse<Boolean>> deleteEmployee(@PathVariable Long employeeId){
+        employeeService.deleteEmployee(employeeId);
+        return ResponseEntity.ok(BaseResponse.<Boolean>builder()
+                        .code(200)
+                        .message("Çalışan silindi")
+                        .data(true)
+                .build());
+    }
+
+    //@PreAuthorize("hasAuthority('COMPANY_ADMIN')")
+    @PutMapping("/activate/{employeeId}")
+    public ResponseEntity<BaseResponse<Boolean>> activateEmployee(@PathVariable Long employeeId) {
+        employeeService.setEmployeeActiveStatus(employeeId,true);
+        return ResponseEntity.ok(BaseResponse.<Boolean>builder()
+                .code(200)
+                .data(true)
+                .message("Çalışan yeniden aktif hale getirildi.")
                 .build());
     }
 

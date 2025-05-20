@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+
     Optional<Employee> findByFirstNameAndLastName(String firstName, String lastName);
 
     List<Employee> findByCompanyId(Long companyId);     //      şirket çalışanları
@@ -15,4 +16,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
 
     Optional<Employee> findByUserId(Long userId);
+
+    Optional<Employee> findByIdAndIsActiveFalse(Long employeeId);
 }

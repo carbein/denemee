@@ -8,4 +8,6 @@ import java.util.List;
 public interface CompanyTitleRepository extends JpaRepository<CompanyTitle, Long> {
 
     List<CompanyTitle> findByCompanyId(Long companyId); // şirketin kullanabileceği unvanlar
+
+    boolean existsByCompanyIdAndTitleId(Long id, Long aLong);
 }

@@ -24,15 +24,50 @@
     justify-content: start;
     align-items: center;
     height: 100vh;
-
-
-
     border-radius: 50px;
     background-color: #76cec2;
+    min-width: 320px;
+    min-height: 720px;
 
 
 
 }
+
+label.Label{
+
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto";
+    font-size: 0.8rem;
+
+
+
+
+
+
+}
+
+input.E-mail.Input{
+    border-radius: 10px;
+    border: none;
+
+}
+
+input.Password.Input{
+
+    border-radius: 10px;
+    border: none;
+}
+
+input.Name.Input{
+    border-radius: 10px;
+    border: none;
+}
+
+input.SurName.Input{
+     border-radius: 10px;
+     border: none;
+ }
 
 .input-area{
     display: flex;

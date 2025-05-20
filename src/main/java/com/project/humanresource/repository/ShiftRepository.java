@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ShiftRepository extends JpaRepository<Shift, Long> {
 
-    List<Shift> findIsActiveTrue(); // aktif vardiyalar
+   List<Shift> findByIsActiveTrue(); // aktif vardiyalar
 
 }
