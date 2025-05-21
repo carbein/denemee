@@ -22,6 +22,7 @@ public class BranchDepartmentService {
     private final CompanyRepository companyRepository;
     private final CompanyBranchRepository companyBranchRepository;
     private final DepartmentRepository departmentRepository;
+    private final UserRoleService userRoleService;
 
     public void assignDepartmentBranch(AssignDepartmentToBranchRequestDto dto) {
         String email= SecurityContextHolder.getContext().getAuthentication().getName();
@@ -29,7 +30,9 @@ public class BranchDepartmentService {
         User user=userRepository.findByEmail(email)
                 .orElseThrow(()->new HumanResourceException(ErrorType.USER_NOT_FOUND));
 
-        if (!user.getUserRoleId().equals(UserStatus.COMPANY_ADMIN.ordinal())){
+        UserRole userRole=userRoleService.findByUserId(user.getId());
+
+        if (!userRole.getUserStatus().equals(UserStatus.COMPANY_ADMIN)){
             throw new HumanResourceException(ErrorType.UNAUTHORIZED);
         }
 
@@ -64,7 +67,9 @@ public class BranchDepartmentService {
         User user=userRepository.findByEmail(email)
                 .orElseThrow(()->new HumanResourceException(ErrorType.USER_NOT_FOUND));
 
-        if (!user.getUserRoleId().equals(UserStatus.COMPANY_ADMIN.ordinal())){
+        UserRole userRole=userRoleService.findByUserId(user.getId());
+
+        if (!userRole.getUserStatus().equals(UserStatus.COMPANY_ADMIN)){
             throw new HumanResourceException(ErrorType.UNAUTHORIZED);
         }
 

@@ -31,8 +31,7 @@ public class User extends BaseEntity {
      String password;
      boolean isVerified = false;
 
-    @NotNull
-     Long userRoleId;
+
 
 
 }

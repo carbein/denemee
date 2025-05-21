@@ -1,6 +1,5 @@
 package com.project.humanresource.service;
 
-import com.project.humanresource.entity.User;
 import com.project.humanresource.entity.UserRole;
 import com.project.humanresource.repository.UserRepository;
 import com.project.humanresource.repository.UserRoleRepository;
@@ -31,13 +30,11 @@ public class UserRoleService {
     }
 
     public List<UserRole> findAllRole(Long userId){
-        return userRoleRepository.findByUserId(userId);
+        return userRoleRepository.findAllByUserId(userId);
     }
 
-    UserStatus resolveUserStatus(Long roleId) {
-        if (roleId == null || roleId >= UserStatus.values().length) {
-            return UserStatus.PENDING;
-        }
-        return UserStatus.values()[roleId.intValue()];
+
+    public UserRole findByUserId(Long userId) {
+        return  userRoleRepository.findByUserId(userId);
     }
 }

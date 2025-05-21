@@ -15,8 +15,8 @@ public class RestApis {
     public static final String SHIFTBREAK = BASE_URL + "/shiftbreak";
     public static final String USER = BASE_URL + "/user";
 
-    public static final String REGISTER = "/register";
-    public static final String LOGIN = "/login";
-    public static final String LOGOUT = "/logout";
+    public static final String REGISTER = BASE_URL+"/register";
+    public static final String LOGIN = BASE_URL+"/login";
+    public static final String LOGOUT = BASE_URL+"/logout";
     public static final String ADDSHIFT = "/add-shift";
 }

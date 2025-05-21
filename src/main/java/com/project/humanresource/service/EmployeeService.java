@@ -3,10 +3,7 @@ package com.project.humanresource.service;
 import com.project.humanresource.dto.request.AddEmployeeRequestDto;
 import com.project.humanresource.dto.request.AssignTitleToEmployeeRequestDto;
 import com.project.humanresource.dto.request.SetPersonelFileRequestDto;
-import com.project.humanresource.entity.Company;
-import com.project.humanresource.entity.Employee;
-import com.project.humanresource.entity.PersonalFile;
-import com.project.humanresource.entity.User;
+import com.project.humanresource.entity.*;
 import com.project.humanresource.exception.ErrorType;
 import com.project.humanresource.exception.HumanResourceException;
 import com.project.humanresource.repository.*;
@@ -30,6 +27,7 @@ public class EmployeeService {
     private final PersonelFileRepository personelFileRepository;
     private final CompanyRepository companyRepository;
     private final CompanyTitleRepository companyTitleRepository;
+    private final UserRoleService userRoleService;
 
 
     public void addEmployee( AddEmployeeRequestDto dto, Long companyId) {
@@ -71,7 +69,9 @@ public class EmployeeService {
         User user=userRepository.findByEmail(email)
                 .orElseThrow(()->new HumanResourceException(ErrorType.USER_NOT_FOUND));
 
-        if (!user.getUserRoleId().equals(UserStatus.EMPLOYEE.ordinal())){
+        UserRole userRole=userRoleService.findByUserId(user.getId());
+
+        if (!userRole.getUserStatus().equals(UserStatus.COMPANY_ADMIN)){
             throw new HumanResourceException(ErrorType.UNAUTHORIZED);
         }
 
@@ -111,7 +111,9 @@ public class EmployeeService {
         User user=userRepository.findByEmail(email)
                 .orElseThrow(()->new HumanResourceException(ErrorType.USER_NOT_FOUND));
 
-        if (!user.getUserRoleId().equals(UserStatus.COMPANY_ADMIN.ordinal())){
+        UserRole userRole=userRoleService.findByUserId(user.getId());
+
+        if (!userRole.getUserStatus().equals(UserStatus.COMPANY_ADMIN)){
             throw new HumanResourceException(ErrorType.UNAUTHORIZED);
         }
 
@@ -138,7 +140,9 @@ public class EmployeeService {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new HumanResourceException(ErrorType.USER_NOT_FOUND));
 
-        if (!user.getUserRoleId().equals(UserStatus.COMPANY_ADMIN.ordinal())){
+        UserRole userRole=userRoleService.findByUserId(user.getId());
+
+        if (!userRole.getUserStatus().equals(UserStatus.COMPANY_ADMIN)){
             throw new HumanResourceException(ErrorType.UNAUTHORIZED);
         }
 
@@ -160,7 +164,9 @@ public class EmployeeService {
         String email= SecurityContextHolder.getContext().getAuthentication().getName();
         User user=userRepository.findByEmail(email)
                 .orElseThrow(()->new HumanResourceException(ErrorType.USER_NOT_FOUND));
-        if (!user.getUserRoleId().equals(UserStatus.COMPANY_ADMIN.ordinal())){
+        UserRole userRole=userRoleService.findByUserId(user.getId());
+
+        if (!userRole.getUserStatus().equals(UserStatus.COMPANY_ADMIN)){
             throw new HumanResourceException(ErrorType.UNAUTHORIZED);
         }
         Company company=companyRepository.findByUserId(user.getId())

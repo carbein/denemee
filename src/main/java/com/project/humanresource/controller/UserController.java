@@ -18,7 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
+
+import static com.project.humanresource.config.RestApis.*;
 
 @RestController
 @RequestMapping("/api/users")
@@ -40,7 +43,7 @@ public class UserController {
     }
 
     //     Giriş işlemi
-    @PostMapping("login")
+    @PostMapping("/login")
     public ResponseEntity<BaseResponse<String>> doLogin(@RequestBody AddLoginRequestDto dto){
 
         return ResponseEntity.ok(BaseResponse.<String>builder()
@@ -74,7 +77,7 @@ public class UserController {
     }
 
 
-    @PostMapping("(set-password")
+    @PostMapping("(/set-password")
     public ResponseEntity<BaseResponse<Boolean>> setPassword(@RequestBody @Valid SetPasswordRequestDto dto) {
         if (!dto.password().equals(dto.rePassword())) throw new HumanResourceException(ErrorType.PASSWORD_MISMATCH);
 

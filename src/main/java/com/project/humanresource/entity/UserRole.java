@@ -19,6 +19,6 @@ public class UserRole extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(unique = true, nullable = false)
     UserStatus userStatus;
-    Long userId; // employee, company manager, site admin
+    Long userId;
 
 } 

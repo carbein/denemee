@@ -8,10 +8,12 @@ import com.project.humanresource.dto.response.LoginResponseDto;
 import com.project.humanresource.dto.response.UserResponseDto;
 import com.project.humanresource.entity.Company;
 import com.project.humanresource.entity.User;
+import com.project.humanresource.entity.UserRole;
 import com.project.humanresource.exception.ErrorType;
 import com.project.humanresource.exception.HumanResourceException;
 import com.project.humanresource.repository.CompanyRepository;
 import com.project.humanresource.repository.UserRepository;
+import com.project.humanresource.repository.UserRoleRepository;
 import com.project.humanresource.utility.UserStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,7 @@ public class UserService {
     private final JwtManager jwtManager;
     private final UserRoleService userRoleService;
     private final EmployeeService employeeService;
+    private final UserRoleRepository userRoleRepository;
 
 
     public void register(AddRegisterRequestDto dto) {
@@ -45,7 +48,10 @@ public class UserService {
                 .password(dto.password())
                 .isActive(false)
                 .isVerified(false)
-                .userRoleId((long) UserStatus.PENDING.ordinal())     // Enum id si olarak atanıyor.
+                .build();
+        UserRole userRole = UserRole.builder()
+                .userId(user.getId())
+                .userStatus(UserStatus.PENDING)  // Enum
                 .build();
 
         userRepository.save(user);
@@ -72,9 +78,10 @@ public class UserService {
             throw new HumanResourceException(ErrorType.USER_NOT_ACTIVE);
         }
 
-        UserStatus role = UserStatus.values()[user.getUserRoleId().intValue()];
+        UserRole userRole=userRoleService.findByUserId(user.getId());
+        UserStatus role = userRole.getUserStatus();
         //UserStatus role=userRoleService.resolveUserStatus(user.getUserRoleId());
-        String token = jwtManager.createToken(user.getId(), user.getEmail(), role);
+        String token = jwtManager.createToken(user.getId(), user.getEmail(),role);
         return token;
 
     }
@@ -83,13 +90,19 @@ public class UserService {
         User user = userRepository.findById(dto.userId()).orElseThrow(() -> new HumanResourceException(ErrorType.USER_NOT_FOUND));
 
         Company company = companyRepository.findByUserId(user.getId()).orElseThrow(() -> new HumanResourceException(ErrorType.COMPANY_NOT_FOUND));
+
+        UserRole userRole=userRoleService.findByUserId(user.getId());
+
+
+
         if (dto.approved()) { // onayladıktan sonra şirket aktif ve pasifliği belli olur.
             user.setVerified(true);
             user.setActive(true);
-            user.setUserRoleId((long) UserStatus.COMPANY_ADMIN.ordinal());     // onayladıktan sonra şirket yöneticisi olur
+                // onayladıktan sonra şirket yöneticisi olur
 
             company.setActive(true);
             company.setVerified(true);
+            userRole.setUserStatus(UserStatus.COMPANY_ADMIN);
 
         } else {
             user.setActive(false);
@@ -98,6 +111,10 @@ public class UserService {
             company.setVerified(false);
 
         }
+        userRepository.save(user);
+        companyRepository.save(company);
+        userRoleRepository.save(userRole);
+
 
     }
 
@@ -124,10 +141,17 @@ public class UserService {
         User user=User.builder()
                 .email(email)
                 .password(password)
-                .userRoleId((long) UserStatus.EMPLOYEE.ordinal())
                 .isActive(true)
                 .isVerified(true)
                 .build();
+
+
+        UserRole userRole= UserRole.builder()
+                .userId(user.getId())
+                .userStatus(UserStatus.EMPLOYEE)
+                .build();
+
+        userRoleRepository.save(userRole);
         userRepository.save(user);
 
         // 2. Employee eşlemesi yap

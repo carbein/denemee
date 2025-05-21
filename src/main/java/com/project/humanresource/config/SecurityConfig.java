@@ -22,13 +22,14 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth->auth
-                        .requestMatchers("/dev/v1/register","/dev/v1/shift","/dev/v1/employee",
+                        .requestMatchers("/api/users/register","/dev/v1/shift","/dev/v1/employee",
                                 "/swagger-ui/**","/v3/api-docs/**",
-                                "/api/auth/**","/api/public/**"
+                                "/api/auth/**","/api/public/**","/api/users/login"
                         ).permitAll()
                         .requestMatchers("/admin/**").hasAuthority("SITE_ADMIN")
                         .requestMatchers("/company-manager/**").hasAuthority("COMPANY_ADMIN")
                         .requestMatchers("/employee/**").hasAuthority("EMPLOYEE")
+                        .requestMatchers("/api/users/approve").hasAuthority("SITE_ADMIN")
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -36,4 +37,6 @@ public class SecurityConfig {
                 .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class).build();
 
     }
+
+
 }

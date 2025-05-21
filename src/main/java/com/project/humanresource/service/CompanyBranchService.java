@@ -4,6 +4,7 @@ import com.project.humanresource.dto.request.AddCompanyBranchRequestDto;
 import com.project.humanresource.entity.Company;
 import com.project.humanresource.entity.CompanyBranch;
 import com.project.humanresource.entity.User;
+import com.project.humanresource.entity.UserRole;
 import com.project.humanresource.exception.ErrorType;
 import com.project.humanresource.exception.HumanResourceException;
 import com.project.humanresource.repository.CompanyBranchRepository;
@@ -21,15 +22,17 @@ public class CompanyBranchService {
     private final UserRepository userRepository;
     private final CompanyRepository companyRepository;
     private final CompanyBranchRepository companyBranchRepository;
+    private final UserRoleService userRoleService;
 
     public void addBranch(AddCompanyBranchRequestDto dto) {
         String email= SecurityContextHolder.getContext().getAuthentication().getName();
 
         User user=userRepository.findByEmail(email).orElseThrow(()->new HumanResourceException(ErrorType.USER_NOT_FOUND));
 
-        if (!userRepository.equals(UserStatus.COMPANY_ADMIN.ordinal())){
-            throw new HumanResourceException(ErrorType.UNAUTHORIZED);
+        UserRole userRole=userRoleService.findByUserId(user.getId());
 
+        if (!userRole.getUserStatus().equals(UserStatus.COMPANY_ADMIN)){
+            throw new HumanResourceException(ErrorType.UNAUTHORIZED);
         }
 
         Company company= companyRepository.findByUserId(user.getId())

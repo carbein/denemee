@@ -4,6 +4,7 @@ import com.project.humanresource.dto.request.AddDepartmentRequesDto;
 import com.project.humanresource.entity.Company;
 import com.project.humanresource.entity.Department;
 import com.project.humanresource.entity.User;
+import com.project.humanresource.entity.UserRole;
 import com.project.humanresource.exception.ErrorType;
 import com.project.humanresource.exception.HumanResourceException;
 import com.project.humanresource.repository.CompanyRepository;
@@ -20,6 +21,7 @@ public class DepartmentService {
     private final DepartmentRepository departmentRepository;
     private final UserRepository userRepository;
     private final CompanyRepository companyRepository;
+    private final UserRoleService userRoleService;
 
     public void addDepartment(AddDepartmentRequesDto dto) {
         String email= SecurityContextHolder.getContext().getAuthentication().getName();
@@ -27,7 +29,9 @@ public class DepartmentService {
         User user=userRepository.findByEmail(email)
                 .orElseThrow(()-> new HumanResourceException(ErrorType.USER_NOT_FOUND));
 
-        if (!user.getUserRoleId().equals(UserStatus.COMPANY_ADMIN.ordinal())){
+        UserRole userRole=userRoleService.findByUserId(user.getId());
+
+        if (!userRole.getUserStatus().equals(UserStatus.COMPANY_ADMIN)){
             throw new HumanResourceException(ErrorType.UNAUTHORIZED);
         }
 
