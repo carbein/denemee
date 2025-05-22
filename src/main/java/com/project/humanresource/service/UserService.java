@@ -7,11 +7,13 @@ import com.project.humanresource.dto.request.RegisterApproveDto;
 import com.project.humanresource.dto.response.LoginResponseDto;
 import com.project.humanresource.dto.response.UserResponseDto;
 import com.project.humanresource.entity.Company;
+import com.project.humanresource.entity.EmailVerification;
 import com.project.humanresource.entity.User;
 import com.project.humanresource.entity.UserRole;
 import com.project.humanresource.exception.ErrorType;
 import com.project.humanresource.exception.HumanResourceException;
 import com.project.humanresource.repository.CompanyRepository;
+import com.project.humanresource.repository.EmailVerificationRepository;
 import com.project.humanresource.repository.UserRepository;
 import com.project.humanresource.repository.UserRoleRepository;
 import com.project.humanresource.utility.UserStatus;
@@ -21,6 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -35,6 +38,8 @@ public class UserService {
     private final UserRoleService userRoleService;
     private final EmployeeService employeeService;
     private final UserRoleRepository userRoleRepository;
+    private final EmailVerificationRepository emailVerificationRepository;
+
 
 
     public void register(AddRegisterRequestDto dto) {
@@ -73,7 +78,7 @@ public class UserService {
     public String login(AddLoginRequestDto dto) {
         User user = userRepository.findByEmail(dto.email()).orElseThrow(() ->
                 new HumanResourceException(ErrorType.USER_NOT_FOUND));
-        if (dto.password().equals(user.getPassword())) throw new HumanResourceException(ErrorType.INVALID_PASSWORD);
+        if (!dto.password().equals(user.getPassword())) throw new HumanResourceException(ErrorType.INVALID_PASSWORD);
         if (!user.isActive() || !user.isVerified()) {
             throw new HumanResourceException(ErrorType.USER_NOT_ACTIVE);
         }
@@ -156,5 +161,34 @@ public class UserService {
 
         // 2. Employee eşlemesi yap
         employeeService.assignUserToEmployee(email,user.getId());
+    }
+
+    public void activateAccount(String token) {
+        // 1. Token kaydı bul
+        EmailVerification emailVerification = emailVerificationRepository.findByToken(token)
+                .orElseThrow(() -> new RuntimeException("Invalid token."));
+
+        // 2. Süre kontrolü
+        if (emailVerification.getExpiryDate().isBefore(LocalDateTime.now())) {
+            throw new RuntimeException("Token expired.");
+        }
+
+        // 3. Zaten kullanıldıysa
+        if (emailVerification.isUsed()) {
+            throw new RuntimeException("Token already used.");
+        }
+
+        // 4. Kullanıcıyı getir
+        String email = emailVerification.getEmail();
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found."));
+
+        // 5. Hesabı aktif et
+        user.setVerified(true);
+        userRepository.save(user);
+
+        // 6. Token'i işaretle
+        emailVerification.setUsed(true);
+        emailVerificationRepository.save(emailVerification);
     }
 }

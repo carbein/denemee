@@ -92,6 +92,11 @@ public class UserController {
 
 
     }
+    @GetMapping("/activate")
+    public ResponseEntity<String> activateAccount(@RequestParam String token) {
+        userService.activateAccount(token);
+        return ResponseEntity.ok("Account activated successfully.");
+    }
 
 
 

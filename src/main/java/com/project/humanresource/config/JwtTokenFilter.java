@@ -14,6 +14,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -24,9 +25,15 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     @Autowired
     private JwtUserDetails jwtUserDetails;
 
+    @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
         String path = request.getServletPath();
-        return path.equals("/api/users/login") || path.equals("/api/auth/register");
+        return List.of(
+                "/api/users/login",
+                "/api/users/register",
+                "/api/users/activate",
+                "/api/auth/verify-email"
+        ).stream().anyMatch(path::startsWith);
     }
 
 

@@ -20,7 +20,7 @@ public class AdminUserInintializer implements CommandLineRunner {
         if (userRepository.findByEmail("admin@site.com").isEmpty()) {
             User admin = User.builder()
                     .email("admin@site.com")
-                    .password("Aa1b23456.*") // ✅ strong password
+                    .password("Aa1c2b3d456.*") // ✅ strong password
                     .isActive(true)
                     .isVerified(true)
                     .build();

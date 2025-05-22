@@ -22,9 +22,19 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth->auth
-                        .requestMatchers("/api/users/register","/dev/v1/shift","/dev/v1/employee",
-                                "/swagger-ui/**","/v3/api-docs/**",
-                                "/api/auth/**","/api/public/**","/api/users/login"
+                        .requestMatchers("/api/users/register",
+                                "/dev/v1/shift",
+                                "/dev/v1/employee",
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**",
+                                "/api/auth/**",
+                                "/api/public/**",
+                                "/api/users/login",
+                                "/api/users/activate",
+                                "/api/users/verify/**",
+                                "/api/auth/verify-email/**",
+                                "/api/auth/**"
+
                         ).permitAll()
                         .requestMatchers("/admin/**").hasAuthority("SITE_ADMIN")
                         .requestMatchers("/company-manager/**").hasAuthority("COMPANY_ADMIN")

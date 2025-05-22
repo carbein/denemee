@@ -14,11 +14,11 @@ public class EmailVerificationController {
 
     private final EmailVerificationService emailVerificationService;
 
-//    @PostMapping("/send-verification")
-//    public ResponseEntity<String> sendEmail(@RequestParam String email) {
-//        verificationService.sendVerificationEmail(email);
-//        return ResponseEntity.ok("Verification email sent.");
-//    }
+    @PostMapping("/send-verification")
+    public ResponseEntity<String> sendEmail(@RequestParam String email) {
+        emailVerificationService.sendVerificationEmail(email);
+        return ResponseEntity.ok("Verification email sent.");
+    }
 
     @GetMapping("/verify-email")
     public ResponseEntity<BaseResponse<String>> verifyEmail(@RequestParam String token) {
