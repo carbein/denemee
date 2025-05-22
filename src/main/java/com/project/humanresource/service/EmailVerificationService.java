@@ -61,7 +61,7 @@ public class EmailVerificationService {
 //           message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
             message.setSubject("Email Verification");
             message.setText("Click the link to verify your email: " +
-                    "http://localhost:9090/api/verify?token=" + token);
+                    "http://localhost:9090/api/auth/verify-email?token=" + token);
 
             mailSender.send(message);
         } catch (MailException e) {

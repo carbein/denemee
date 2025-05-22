@@ -33,7 +33,8 @@ public class SecurityConfig {
                                 "/api/users/activate",
                                 "/api/users/verify/**",
                                 "/api/auth/verify-email/**",
-                                "/api/auth/**"
+                                "/api/auth/**",
+                                "/api/verify/**"
 
                         ).permitAll()
                         .requestMatchers("/admin/**").hasAuthority("SITE_ADMIN")
